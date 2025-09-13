@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tropiko - Tropikal Lezzetler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/forest.svg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-style: italic;
+            font-weight: 300;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(86, 171, 47, 0.85) 0%, rgba(168, 224, 99, 0.85) 100%);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+        
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            transform: rotate(30deg);
+        }
+        
+        .intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .intro p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .fruits-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .fruit-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            overflow: hidden;
+            width: 320px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .fruit-card:nth-child(odd) {
+            transform: translateX(-100px) rotate(-5deg);
+        }
+        
+        .fruit-card:nth-child(even) {
+            transform: translateX(100px) rotate(5deg);
+        }
+        
+        .fruit-card.visible {
+            opacity: 1;
+            transform: translateY(0) rotate(0) scale(1);
+        }
+        
+        .fruit-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25);
+        }
+        
+        .fruit-image {
+            height: 220px;
+            width: 100%;
+            background-size: 60%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f9f9f9;
+            padding: 20px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fruit-card:hover .fruit-image {
+            background-size: 70%;
+            transform: scale(1.05);
+        }
+        
+        .fruit-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 100%);
+        }
+        
+        .fruit-content {
+            padding: 25px;
+            position: relative;
+        }
+        
+        .fruit-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #56ab2f;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .fruit-content h3::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            margin: 10px auto;
+            border-radius: 3px;
+        }
+        
+        .fruit-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 400;
+        }
+        
+        .fruit-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .info-btn {
+            padding: 14px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .info-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .info-btn:hover::before {
+            width: 100%;
+        }
+        
+        .info-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .taste-btn {
+            background: linear-gradient(to right, #FFC837, #FF8008);
+            color: white;
+        }
+        
+        .health-btn {
+            background: linear-gradient(to right, #56ab2f, #a8e063);
+            color: white;
+        }
+        
+        .buy-btn {
+            background: linear-gradient(to right, #FF5E7D, #FF8A8C);
+            color: white;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            width: 90%;
+            max-width: 550px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: modalAppear 0.4s forwards;
+        }
+        
+        @keyframes modalAppear {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #ff6a88;
+        }
+        
+        .contact-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            gap: 15px;
+        }
+        
+        .contact-btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .contact-btn:hover::before {
+            width: 100%;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .whatsapp {
+            background: linear-gradient(to right, #25D366, #1EBEA5);
+            color: white;
+        }
+        
+        .email {
+            background: linear-gradient(to right, #EA4335, #D14836);
+            color: white;
+        }
+        
+        .contact-form {
+            margin-top: 25px;
+            display: none;
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            resize: vertical;
+            min-height: 120px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #56ab2f;
+        }
+        
+        .send-btn {
+            padding: 15px 30px;
+            background: linear-gradient(to right, #56ab2f, #a8e063);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .send-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(86, 171, 47, 0.3);
+        }
+        
+        .contact-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            margin-top: 80px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1s;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23FF9A8B" opacity="0.1" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+        
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%2356ab2f" opacity="0.1" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+        
+        .contact-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #56ab2f;
+            font-size: 2.2rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-section h2::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .contact-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-form-grid input,
+        .contact-form-grid textarea,
+        .contact-form-grid select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            margin-bottom: 0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form-grid input:focus,
+        .contact-form-grid textarea:focus,
+        .contact-form-grid select:focus {
+            outline: none;
+            border-color: #56ab2f;
+            box-shadow: 0 5px 15px rgba(86, 171, 47, 0.1);
+        }
+        
+        .contact-form-grid textarea {
+            grid-column: span 2;
+            min-height: 150px;
+        }
+        
+        .contact-submit {
+            grid-column: span 2;
+            padding: 18px 35px;
+            background: linear-gradient(to right, #FF5E7D, #FF8A8C);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 10px auto;
+            width: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 94, 125, 0.3);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #232323 0%, #3a3a3a 100%);
+            color: white;
+            padding: 50px 0 25px;
+            margin-top: 80px;
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #a8e063;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            border-radius: 3px;
+        }
+        
+        .footer-links a {
+            display: block;
+            color: #ddd;
+            margin-bottom: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .footer-links a::before {
+            content: '➜';
+            position: absolute;
+            left: 0;
+            color: #a8e063;
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #a8e063;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a:hover::before {
+            transform: translateX(3px);
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin-right: 20px;
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #a8e063;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 18px 30px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1001;
+            animation: notificationSlideIn 0.5s forwards;
+        }
+        
+        @keyframes notificationSlideIn {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @media (max-width: 968px) {
+            .contact-form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form-grid textarea {
+                grid-column: span 1;
+            }
+            
+            .contact-submit {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .fruit-card {
+                width: 100%;
+                max-width: 380px;
+            }
+            
+            .contact-options {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-section {
+                min-width: 100%;
+            }
+            
+            .intro h2 {
+                font-size: 2rem;
+            }
+            
+            .intro p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-pineapple"></i>
+            </div>
+            <h1>Tropiko</h1>
+            <p class="tagline">Tropikal Lezzetler Kapınızda!</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Tropikal Cennetten Lezzetler</h2>
+            <p>Tropiko olarak, en taze ve lezzetli tropikal meyve ve sebzeleri sizlere sunmaktan gurur duyuyoruz. Sağlıklı yaşam için doğanın bize sunduğu bu nimetleri evinize getiriyoruz.</p>
+        </div>
+
+        <div class="fruits-container">
+            <div class="fruit-card">
+                <div class="fruit-image" style="background-image: url('/images/limon.svg');"></div>
+                <div class="fruit-content">
+                    <h3>Limon</h3>
+                    <p>Bol C vitamini deposu tropikal limonlar. Tazelik ve ferahlık için...</p>
+                    <div class="fruit-buttons">
+                        <button class="info-btn taste-btn" data-fruit="Limon" data-type="taste">Nasıl Tadır?</button>
+                        <button class="info-btn health-btn" data-fruit="Limon" data-type="health">Neden Sağlıklı?</button>
+                        <button class="info-btn buy-btn" data-fruit="Limon">Sipariş Ver</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+                <div class="fruit-image" style="background-image: url('/images/avakado.svg');"></div>
+                <div class="fruit-content">
+                    <h3>Avokado</h3>
+                    <p>Kremamsı dokusu ve sağlıklı yağları ile avokado. Sağlık için...</p>
+                    <div class="fruit-buttons">
+                        <button class="info-btn taste-btn" data-fruit="Avokado" data-type="taste">Nasıl Tadır?</button>
+                        <button class="info-btn health-btn" data-fruit="Avokado" data-type="health">Neden Sağlıklı?</button>
+                        <button class="info-btn buy-btn" data-fruit="Avokado">Sipariş Ver</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+                <div class="fruit-image" style="background-image: url('/images/ejdermeyvesi.svg');"></div>
+                <div class="fruit-content">
+                    <h3>Ejder Meyvesi</h3>
+                    <p>Egzotik görünümü ve antioksidan zengini ejder meyvesi.</p>
+                    <div class="fruit-buttons">
+                        <button class="info-btn taste-btn" data-fruit="Ejder Meyvesi" data-type="taste">Nasıl Tadır?</button>
+                        <button class="info-btn health-btn" data-fruit="Ejder Meyvesi" data-type="health">Neden Sağlıklı?</button>
+                        <button class="info-btn buy-btn" data-fruit="Ejder Meyvesi">Sipariş Ver</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+                <div class="fruit-image" style="background-image: url('/images/kivi.svg');"></div>
+                <div class="fruit-content">
+                    <h3>Kivi</h3>
+                    <p>C vitamini deposu kivi. Bağışıklık sisteminiz için harika!</p>
+                    <div class="fruit-buttons">
+                        <button class="info-btn taste-btn" data-fruit="Kivi" data-type="taste">Nasıl Tadır?</button>
+                        <button class="info-btn health-btn" data-fruit="Kivi" data-type="health">Neden Sağlıklı?</button>
+                        <button class="info-btn buy-btn" data-fruit="Kivi">Sipariş Ver</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+                <div class="fruit-image" style="background-image: url('/images/ananas.svg');"></div>
+                <div class="fruit-content">
+                    <h3>Ananas</h3>
+                    <p>Tropikal lezzetin kralı ananas. Vitamin ve mineral kaynağı.</p>
+                    <div class="fruit-buttons">
+                        <button class="info-btn taste-btn" data-fruit="Ananas" data-type="taste">Nasıl Tadır?</button>
+                        <button class="info-btn health-btn" data-fruit="Ananas" data-type="health">Neden Sağlıklı?</button>
+                        <button class="info-btn buy-btn" data-fruit="Ananas">Sipariş Ver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>İletişim ve Sipariş</h2>
+            <div class="contact-form-grid">
+                <input type="text" placeholder="Adınız">
+                <input type="email" placeholder="E-posta Adresiniz">
+                <input type="tel" placeholder="Telefon Numaranız">
+                <select>
+                    <option value="">Ürün Seçin</option>
+                    <option value="Limon">Limon</option>
+                    <option value="Avokado">Avokado</option>
+                    <option value="Ejder Meyvesi">Ejder Meyvesi</option>
+                    <option value="Kivi">Kivi</option>
+                    <option value="Ananas">Ananas</option>
+                </select>
+                <textarea placeholder="Mesajınız"></textarea>
+                <button class="contact-submit">Gönder</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Bilgi</h2>
+            <div id="modalContent">
+                <p id="modalText">İçerik yükleniyor...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="buyModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="buyModalTitle">Satın Alma</h2>
+            <p>Satın almak için bir iletişim yöntemi seçin:</p>
+            
+            <div class="contact-options">
+                <button class="contact-btn whatsapp" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </button>
+                <button class="contact-btn email" id="emailBtn">
+                    <i class="fas fa-envelope"></i> E-posta
+                </button>
+            </div>
+            
+            <div class="contact-form" id="whatsappForm">
+                <textarea placeholder="Mesajınızı yazın..."></textarea>
+                <button class="send-btn" id="sendWhatsapp">Gönder</button>
+            </div>
+            
+            <div class="contact-form" id="emailForm">
+                <textarea placeholder="Mesajınızı yazın..."></textarea>
+                <button class="send-btn" id="sendEmail">Gönder</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        Mesajınız gönderiliyor...
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tropiko</h3>
+                <p>Tropikal lezzetleri en taze haliyle sizlere ulaştırıyoruz.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Hızlı Erişim</h3>
+                <div class="footer-links">
+                    <a href="/privacy">Gizlilik Politikası</a>
+                    <a href="/terms">Kullanım Şartları</a>
+                    <a href="/contact">İletişim</a>
+                    <a href="/legal">Yasal</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Bizi Takip Edin</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <p>WhatsApp: +90 374 837 2626</p>
+                <p>E-posta: 3748372616@gmail.com</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 Tropiko - Tüm Hakları Saklıdır.
+        </div>
+    </footer>
+
+    <script>
+        // Meyve bilgileri
+        const fruitInfo = {
+            Limon: {
+                taste: "Tropikal limonlar, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcı bir etkisi vardır. Yemeklerde, içeceklerde ve tatlılarda kullanılabilir.",
+                health: "C vitamini deposu olan limon, bağışıklık sistemini güçlendirir, sindirime yardımcı olur ve cilt sağlığını korur. Ayrıca antioksidan özelliği vardır ve vücuttaki toksinlerin atılmasına yardımcı olur."
+            },
+            Avokado: {
+                taste: "Kremamsı, zengin và hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır. Salatalarda, tostlarda ve mezelerde kullanılabilir.",
+                health: "Sağlıklı tekli doymamış yağlar içerir, kalp sağlığını destekler, lif açısından zengindir ve potasyum içeriği yüksektir. Ayrıca göz sağlığına faydalıdır ve kilo kontrolüne yardımcı olur."
+            },
+            "Ejder Meyvesi": {
+                taste: "Hafif tatlı và ferahlatıcı bir tada sahiptir. Kivi ve armut karışımı bir lezzeti vardır. Taze olarak tüketilebileceği gibi smoothie'lerde ve salatalarda da kullanılabilir.",
+                health: "Antioksidanlar, vitaminler ve minerallerle doludur. Bağırsak sağlığını destekler, demir içeriği yüksektir ve bağışıklık sistemini güçlendirir. Ayrıca cilt sağlığına da faydalıdır."
+            },
+            Kivi: {
+                taste: "Tropikal kivi tatlı ve hafif ekşi bir tada sahiptir. Ferahlatıcı và canlandırıcıdır. Taze olarak tüketilebileceği gibi meyve salatalarında ve tatlılarda da kullanılabilir.",
+                health: "C vitamini deposudur, sindirime yardımcı olur, uyku kalitesini artırır ve cilt sağlığını korur. Ayrıca astım semptomlarını hafifletmeye yardımcı olabilir ve kan şekeri kontrolüne katkıda bulunur."
+            },
+            Ananas: {
+                taste: "Tatlı, sulu và hafif asidik bir tada sahiptir. Tropikal bir lezzet şöleni sunar. Taze olarak tüketilebileceği gibi yemeklerde, tatlılarda ve içeceklerde de kullanılabilir.",
+                health: "Bromelain enzimi sayesinde sindirime yardımcı olur, anti-inflamatuar özellikleri vardır ve C vitamini deposudur. Ayrıca bağışıklık sistemini güçlendirir ve kemik sağlığını destekler."
+            }
+        };
+
+        // Animasyon için meyve kartlarını sırayla göster
+        document.addEventListener('DOMContentLoaded', function() {
+            const fruitCards = document.querySelectorAll('.fruit-card');
+            
+            fruitCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, 300 * index);
+            });
+            
+            // Modal işlemleri
+            const infoModal = document.getElementById('infoModal');
+            const buyModal = document.getElementById('buyModal');
+            const closeModals = document.querySelectorAll('.close-modal');
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            const emailBtn = document.getElementById('emailBtn');
+            const whatsappForm = document.getElementById('whatsappForm');
+            const emailForm = document.getElementById('emailForm');
+            const sendWhatsapp = document.getElementById('sendWhatsapp');
+            const sendEmail = document.getElementById('sendEmail');
+            const notification = document.getElementById('notification');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalText = document.getElementById('modalText');
+            const buyModalTitle = document.getElementById('buyModalTitle');
+            
+            let selectedFruit = '';
+            
+            // Bilgi butonlarına tıklama
+            document.querySelectorAll('.info-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const fruit = this.getAttribute('data-fruit');
+                    const type = this.getAttribute('data-type');
+                    
+                    if (type) {
+                        // Bilgi modalını göster
+                        selectedFruit = fruit;
+                        modalTitle.textContent = fruit + ' Hakkında';
+                        modalText.textContent = fruitInfo[fruit][type];
+                        infoModal.style.display = 'flex';
+                    } else {
+                        // Satın alma modalını göster
+                        selectedFruit = fruit;
+                        buyModalTitle.textContent = fruit + ' Satın Al';
+                        buyModal.style.display = 'flex';
+                    }
+                });
+            });
+            
+            // Modal'ları kapatma
+            closeModals.forEach(closeBtn => {
+                closeBtn.addEventListener('click', function() {
+                    infoModal.style.display = 'none';
+                    buyModal.style.display = 'none';
+                    whatsappForm.style.display = 'none';
+                    emailForm.style.display = 'none';
+                });
+            });
+            
+            // WhatsApp butonuna tıklama
+            whatsappBtn.addEventListener('click', function() {
+                whatsappForm.style.display = 'block';
+                emailForm.style.display = 'none';
+            });
+            
+            // E-posta butonuna tıklama
+            emailBtn.addEventListener('click', function() {
+                emailForm.style.display = 'block';
+                whatsappForm.style.display = 'none';
+            });
+            
+            // WhatsApp mesaj gönderme
+            sendWhatsapp.addEventListener('click', function() {
+                const message = document.querySelector('#whatsappForm textarea').value;
+                if (message.trim() === '') {
+                    showNotification('Lütfen bir mesaj yazın', 'error');
+                    return;
+                }
+                
+                const fullMessage = `Merhaba, ${selectedFruit} satın almak istiyorum. Mesajım: ${message}`;
+                const encodedMessage = encodeURIComponent(fullMessage);
+                
+                // WhatsApp'ın cihazda yüklü olup olmadığını kontrol etmek için
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                
+                if (isMobile) {
+                    window.open(`whatsapp://send?phone=+903748372626&text=${encodedMessage}`);
+                } else {
+                    showNotification('WhatsApp masaüstü cihazlarda desteklenmiyor. Lütfen telefonunuzu kullanın.', 'error');
+                }
+                
+                showNotification('Mesajınız WhatsApp ile gönderiliyor...');
+                
+                setTimeout(() => {
+                    buyModal.style.display = 'none';
+                    whatsappForm.style.display = 'none';
+                    document.querySelector('#whatsappForm textarea').value = '';
+                }, 2000);
+            });
+            
+            // E-posta gönderme
+            sendEmail.addEventListener('click', function() {
+                const message = document.querySelector('#emailForm textarea').value;
+                if (message.trim() === '') {
+                    showNotification('Lütfen bir mesaj yazın', 'error');
+                    return;
+                }
+                
+                const subject = `${selectedFruit} Satın Alma İsteği`;
+                const body = `Merhaba, ${selectedFruit} satın almak istiyorum. Mesajım: ${message}`;
+                
+                window.open(`mailto:3748372616@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+                
+                showNotification('E-posta uygulamanız açılıyor...');
+                
+                setTimeout(() => {
+                    buyModal.style.display = 'none';
+                    emailForm.style.display = 'none';
+                    document.querySelector('#emailForm textarea').value = '';
+                }, 2000);
+            });
+            
+            // Bildirim gösterme
+            function showNotification(text, type = 'success') {
+                notification.textContent = text;
+                notification.style.display = 'block';
+                
+                if (type === 'error') {
+                    notification.style.background = 'linear-gradient(to right, #ff4757, #ff6b6b)';
+                } else {
+                    notification.style.background = 'linear-gradient(to right, #ff7e5f, #feb47b)';
+                }
+                
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            }
+            
+            // Dışarı tıklayınca modal'ları kapat
+            window.addEventListener('click', function(event) {
+                if (event.target === infoModal || event.target === buyModal) {
+                    infoModal.style.display = 'none';
+                    buyModal.style.display = 'none';
+                    whatsappForm.style.display = 'none';
+                    emailForm.style.display = 'none';
+                }
+            });
+            
+            // İletişim formu gönderme
+            document.querySelector('.contact-submit').addEventListener('click', function() {
+                showNotification('Mesajınız gönderildi! En kısa sürede sizinle iletişime geçeceğiz.');
+                document.querySelector('.contact-form-grid').reset();
+            });
+        });
+    </script>
+</body>
+</html>
