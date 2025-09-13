@@ -202,6 +202,13 @@
             border-radius: 2px;
         }
         
+        .product-price {
+            font-size: 1.8rem;
+            color: #ff6a88;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
         .product-description {
             color: #555;
             margin-bottom: 30px;
@@ -311,29 +318,181 @@
         }
         
         .product-icon {
-            font-size: 10rem;
-            opacity: 0.8;
+            width: 180px;
+            height: 180px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: 1;
         }
         
         .product.limon .product-icon {
-            color: #c4e538;
+            background-image: url('./images/limon.svg');
         }
         
         .product.avakado .product-icon {
-            color: #a3cb38;
+            background-image: url('./images/avakado.svg');
         }
         
         .product.ejdermeyvesi .product-icon {
-            color: #fda7df;
+            background-image: url('./images/ejdermeyvesi.svg');
         }
         
         .product.kivi .product-icon {
-            color: #b53471;
+            background-image: url('./images/kivi.svg');
         }
         
         .product.ananas .product-icon {
-            color: #ffc312;
+            background-image: url('./images/ananas.svg');
+        }
+        
+        /* Sepet stilleri */
+        .basket-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        .basket-btn {
+            background: linear-gradient(to right, #FF5E7D, #FF8A8C);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .basket-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .basket-count {
+            background: white;
+            color: #FF5E7D;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .basket-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .basket-content {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: modalAppear 0.4s forwards;
+        }
+        
+        .basket-items {
+            margin: 20px 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .basket-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .basket-item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .basket-item-icon {
+            width: 40px;
+            height: 40px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .basket-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            background: #f1f1f1;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .basket-total {
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: right;
+            margin: 20px 0;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(to right, #56ab2f, #a8e063);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(86, 171, 47, 0.3);
+        }
+        
+        .empty-basket {
+            text-align: center;
+            padding: 20px;
+            color: #888;
         }
         
         .modal {
@@ -818,6 +977,16 @@
             .footer-section {
                 min-width: 100%;
             }
+            
+            .basket-container {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .basket-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
         }
 
         /* Yeni eklenen stiller */
@@ -889,12 +1058,41 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+        
+        .order-form {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .order-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .order-form textarea {
+            grid-column: span 2;
+        }
+        
+        .order-submit {
+            grid-column: span 2;
+        }
     </style>
 </head>
 <body>
     <div class="tropical-pattern"></div>
     <div class="leaf-decoration leaf-1"></div>
     <div class="leaf-decoration leaf-2"></div>
+    
+    <!-- Sepet butonu -->
+    <div class="basket-container">
+        <button class="basket-btn" id="basketBtn">
+            <i class="fas fa-shopping-basket"></i>
+            Sepet <span class="basket-count" id="basketCount">0</span>
+        </button>
+    </div>
     
     <header>
         <div class="header-content">
@@ -916,11 +1114,12 @@
             <!-- Limon -->
             <div class="product limon">
                 <div class="product-image">
-                    <i class="product-icon fas fa-lemon"></i>
+                    <div class="product-icon"></div>
                     <div class="champion-badge">C Vitamini Şampiyonu</div>
                 </div>
                 <div class="product-content">
                     <h3>Limon</h3>
+                    <div class="product-price">₺45 / kg</div>
                     <p class="product-description">Tropikal limonlar, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcı bir etkisi vardır.</p>
                     <div class="product-features">
                         <div class="feature"><i class="fas fa-star"></i> C Vitamini Deposu</div>
@@ -934,8 +1133,8 @@
                         <button class="info-btn health-btn" data-fruit="Limon" data-type="health">
                             <i class="fas fa-heart"></i> Sağlık
                         </button>
-                        <button class="info-btn buy-btn" data-fruit="Limon">
-                            <i class="fas fa-shopping-cart"></i> Satın Al
+                        <button class="info-btn buy-btn add-to-basket" data-fruit="Limon" data-price="45">
+                            <i class="fas fa-cart-plus"></i> Sepete Ekle
                         </button>
                     </div>
                 </div>
@@ -944,11 +1143,12 @@
             <!-- Avokado -->
             <div class="product avakado">
                 <div class="product-image">
-                    <i class="product-icon fas fa-leaf"></i>
+                    <div class="product-icon"></div>
                     <div class="champion-badge">Sağlıklı Yağ Şampiyonu</div>
                 </div>
                 <div class="product-content">
                     <h3>Avokado</h3>
+                    <div class="product-price">₺75 / kg</div>
                     <p class="product-description">Kremamsı, zengin ve hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır.</p>
                     <div class="product-features">
                         <div class="feature"><i class="fas fa-star"></i> Sağlıklı Yağ Kaynağı</div>
@@ -962,8 +1162,8 @@
                         <button class="info-btn health-btn" data-fruit="Avokado" data-type="health">
                             <i class="fas fa-heart"></i> Sağlık
                         </button>
-                        <button class="info-btn buy-btn" data-fruit="Avokado">
-                            <i class="fas fa-shopping-cart"></i> Satın Al
+                        <button class="info-btn buy-btn add-to-basket" data-fruit="Avokado" data-price="75">
+                            <i class="fas fa-cart-plus"></i> Sepete Ekle
                         </button>
                     </div>
                 </div>
@@ -972,11 +1172,12 @@
             <!-- Ejder Meyvesi -->
             <div class="product ejdermeyvesi">
                 <div class="product-image">
-                    <i class="product-icon fas fa-dragon"></i>
+                    <div class="product-icon"></div>
                     <div class="champion-badge">Antioksidan Şampiyonu</div>
                 </div>
                 <div class="product-content">
                     <h3>Ejder Meyvesi</h3>
+                    <div class="product-price">₺95 / kg</div>
                     <p class="product-description">Hafif tatlı ve ferahlatıcı bir tada sahiptir. Kivi ve armut karışımı bir lezzeti vardır.</p>
                     <div class="product-features">
                         <div class="feature"><i class="fas fa-star"></i> Antioksidan Zengini</div>
@@ -990,8 +1191,8 @@
                         <button class="info-btn health-btn" data-fruit="Ejder Meyvesi" data-type="health">
                             <i class="fas fa-heart"></i> Sağlık
                         </button>
-                        <button class="info-btn buy-btn" data-fruit="Ejder Meyvesi">
-                            <i class="fas fa-shopping-cart"></i> Satın Al
+                        <button class="info-btn buy-btn add-to-basket" data-fruit="Ejder Meyvesi" data-price="95">
+                            <i class="fas fa-cart-plus"></i> Sepete Ekle
                         </button>
                     </div>
                 </div>
@@ -1000,11 +1201,12 @@
             <!-- Kivi -->
             <div class="product kivi">
                 <div class="product-image">
-                    <i class="product-icon fas fa-kiwi-bird"></i>
+                    <div class="product-icon"></div>
                     <div class="champion-badge">Sindirim Şampiyonu</div>
                 </div>
                 <div class="product-content">
                     <h3>Kivi</h3>
+                    <div class="product-price">₺55 / kg</div>
                     <p class="product-description">Tropikal kivi tatlı ve hafif ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcıdır.</p>
                     <div class="product-features">
                         <div class="feature"><i class="fas fa-star"></i> C Vitamini Deposu</div>
@@ -1018,8 +1220,8 @@
                         <button class="info-btn health-btn" data-fruit="Kivi" data-type="health">
                             <i class="fas fa-heart"></i> Sağlık
                         </button>
-                        <button class="info-btn buy-btn" data-fruit="Kivi">
-                            <i class="fas fa-shopping-cart"></i> Satın Al
+                        <button class="info-btn buy-btn add-to-basket" data-fruit="Kivi" data-price="55">
+                            <i class="fas fa-cart-plus"></i> Sepete Ekle
                         </button>
                     </div>
                 </div>
@@ -1028,11 +1230,12 @@
             <!-- Ananas -->
             <div class="product ananas">
                 <div class="product-image">
-                    <i class="product-icon fas fa-pineapple"></i>
+                    <div class="product-icon"></div>
                     <div class="champion-badge">Enzym Şampiyonu</div>
                 </div>
                 <div class="product-content">
                     <h3>Ananas</h3>
+                    <div class="product-price">₺65 / kg</div>
                     <p class="product-description">Tatlı, sulu ve hafif asidik bir tada sahiptir. Tropikal bir lezzet şöleni sunar.</p>
                     <div class="product-features">
                         <div class="feature"><i class="fas fa-star"></i> Bromelain Enzymi</div>
@@ -1046,8 +1249,8 @@
                         <button class="info-btn health-btn" data-fruit="Ananas" data-type="health">
                             <i class="fas fa-heart"></i> Sağlık
                         </button>
-                        <button class="info-btn buy-btn" data-fruit="Ananas">
-                            <i class="fas fa-shopping-cart"></i> Satın Al
+                        <button class="info-btn buy-btn add-to-basket" data-fruit="Ananas" data-price="65">
+                            <i class="fas fa-cart-plus"></i> Sepete Ekle
                         </button>
                     </div>
                 </div>
@@ -1097,39 +1300,64 @@
         </div>
     </div>
 
+    <!-- Sepet Modal -->
+    <div class="basket-modal" id="basketModal">
+        <div class="basket-content">
+            <span class="close-modal">&times;</span>
+            <h2>Alışveriş Sepetiniz</h2>
+            <div class="basket-items" id="basketItems">
+                <div class="empty-basket">Sepetinizde ürün bulunmamaktadır.</div>
+            </div>
+            <div class="basket-total" id="basketTotal">
+                Toplam: ₺0
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Sipariş Ver</button>
+            
+            <!-- Sipariş Formu -->
+            <div class="order-form" id="orderForm">
+                <h3>Sipariş Bilgileri</h3>
+                <div class="order-form-grid">
+                    <div class="form-group">
+                        <label for="orderName">Adınız Soyadınız *</label>
+                        <input type="text" id="orderName" placeholder="Adınız ve soyadınız">
+                    </div>
+                    <div class="form-group">
+                        <label for="orderEmail">E-posta Adresiniz *</label>
+                        <input type="email" id="orderEmail" placeholder="E-posta adresiniz">
+                    </div>
+                    <div class="form-group">
+                        <label for="orderPhone">Telefon Numaranız *</label>
+                        <input type="tel" id="orderPhone" placeholder="Telefon numaranız">
+                    </div>
+                    <div class="form-group">
+                        <label for="orderAddress">Adresiniz *</label>
+                        <input type="text" id="orderAddress" placeholder="Teslimat adresiniz">
+                    </div>
+                    <div class="form-group">
+                        <label for="orderLanguage">İletişim Dili *</label>
+                        <select id="orderLanguage">
+                            <option value="">Dil Seçin</option>
+                            <option value="Türkçe">Türkçe</option>
+                            <option value="English">English</option>
+                            <option value="Deutsch">Deutsch</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="orderNotes">Notlar</label>
+                        <textarea id="orderNotes" placeholder="Siparişinizle ilgili notlar..."></textarea>
+                    </div>
+                </div>
+                <button class="checkout-btn order-submit" id="orderSubmit">Siparişi Tamamla</button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal" id="infoModal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h2 id="modalTitle">Bilgi</h2>
             <div id="modalContent">
                 <p id="modalText">İçerik yükleniyor...</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="buyModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 id="buyModalTitle">Satın Alma</h2>
-            <p>Satın almak için bir iletişim yöntemi seçin:</p>
-            
-            <div class="contact-options">
-                <button class="contact-btn whatsapp" id="whatsappBtn">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </button>
-                <button class="contact-btn email" id="emailBtn">
-                    <i class="fas fa-envelope"></i> E-posta
-                </button>
-            </div>
-            
-            <div class="contact-form" id="whatsappForm">
-                <textarea placeholder="Mesajınızı yazın..."></textarea>
-                <button class="send-btn" id="sendWhatsapp">Gönder</button>
-            </div>
-            
-            <div class="contact-form" id="emailForm">
-                <textarea placeholder="Mesajınızı yazın..."></textarea>
-                <button class="send-btn" id="sendEmail">Gönder</button>
             </div>
         </div>
     </div>
@@ -1189,25 +1417,212 @@
         const fruitInfo = {
             Limon: {
                 taste: "Tropikal limonlar, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcı bir etkisi vardır. Yemeklerde, içeceklerde ve tatlılarda kullanılabilir.",
-                health: "C vitamini deposu olan limon, bağışıklık sistemini güçlendirir, sindirime yardımcı olur ve cilt sağlığını korur. Ayrıca antioksidan özelliği vardır ve vücuttaki toksinlerin atılmasına yardımcı olur."
+                health: "C vitamini deposu olan limon, bağışıklık sistemini güçlendirir, sindirime yardımcı olur ve cilt sağlığını korur. Ayrıca antioksidan özelliği vardır ve vücuttaki toksinlerin atılmasına yardımcı olur.",
+                price: 45,
+                image: "./images/limon.svg"
             },
             Avokado: {
                 taste: "Kremamsı, zengin ve hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır. Salatalarda, tostlarda ve mezelerde kullanılabilir.",
-                health: "Sağlıklı tekli doymamış yağlar içerir, kalp sağlığını destekler, lif açısından zengindir ve potasyum içeriği yüksektir. Ayrıca göz sağlığına faydalıdır ve kilo kontrolüne yardımcı olur."
+                health: "Sağlıklı tekli doymamış yağlar içerir, kalp sağlığını destekler, lif açısından zengindir ve potasyum içeriği yüksektir. Ayrıca göz sağlığına faydalıdır ve kilo kontrolüne yardımcı olur.",
+                price: 75,
+                image: "./images/avakado.svg"
             },
             "Ejder Meyvesi": {
                 taste: "Hafif tatlı ve ferahlatıcı bir tada sahiptir. Kivi ve armut karışımı bir lezzeti vardır. Taze olarak tüketilebileceği gibi smoothie'lerde ve salatalarda da kullanılabilir.",
-                health: "Antioksidanlar, vitaminler ve minerallerle doludur. Bağırsak sağlığını destekler, demir içeriği yüksektir ve bağışıklık sistemini güçlendirir. Ayrıca cilt sağlığına da faydalıdır."
+                health: "Antioksidanlar, vitaminler ve minerallerle doludur. Bağırsak sağlığını destekler, demir içeriği yüksektir ve bağışıklık sistemini güçlendirir. Ayrıca cilt sağlığına da faydalıdır.",
+                price: 95,
+                image: "./images/ejdermeyvesi.svg"
             },
             Kivi: {
                 taste: "Tropikal kivi tatlı ve hafif ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcıdır. Taze olarak tüketilebileceği gibi meyve salatalarında ve tatlılarda da kullanılabilir.",
-                health: "C vitamini deposudur, sindirime yardımcı olur, uyku kalitesini artırır ve cilt sağlığını korur. Ayrıca astım symptomlarını hafifletmeye yardımcı olabilir ve kan şekeri kontrolüne katkıda bulunur."
+                health: "C vitamini deposudur, sindirime yardımcı olur, uyku kalitesini artırır ve cilt sağlığını korur. Ayrıca astım symptomlarını hafifletmeye yardımcı olabilir ve kan şekeri kontrolüne katkıda bulunur.",
+                price: 55,
+                image: "./images/kivi.svg"
             },
             Ananas: {
                 taste: "Tatlı, sulu ve hafif asidik bir tada sahiptir. Tropikal bir lezzet şöleni sunar. Taze olarak tüketilebileceği gibi yemeklerde, tatlılarda ve içeceklerde de kullanılabilir.",
-                health: "Bromelain enzimi sayesinde sindirime yardımcı olur, anti-inflamatuar özellikleri vardır ve C vitamini deposudur. Ayrıca bağışıklık sistemini güçlendirir ve kemik sağlığını destekler."
+                health: "Bromelain enzimi sayesinde sindirime yardımcı olur, anti-inflamatuar özellikleri vardır ve C vitamini deposudur. Ayrıca bağışıklık sistemini güçlendirir ve kemik sağlığını destekler.",
+                price: 65,
+                image: "./images/ananas.svg"
             }
         };
+
+        // Sepet işlevselliği
+        let basket = JSON.parse(localStorage.getItem('tropikoBasket')) || [];
+        const basketCount = document.getElementById('basketCount');
+        const basketBtn = document.getElementById('basketBtn');
+        const basketModal = document.getElementById('basketModal');
+        const basketItems = document.getElementById('basketItems');
+        const basketTotal = document.getElementById('basketTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const orderForm = document.getElementById('orderForm');
+        const orderSubmit = document.getElementById('orderSubmit');
+
+        // Sepet sayacını güncelle
+        function updateBasketCount() {
+            const totalItems = basket.reduce((total, item) => total + item.quantity, 0);
+            basketCount.textContent = totalItems;
+        }
+
+        // Sepet içeriğini göster
+        function renderBasket() {
+            if (basket.length === 0) {
+                basketItems.innerHTML = '<div class="empty-basket">Sepetinizde ürün bulunmamaktadır.</div>';
+                basketTotal.textContent = 'Toplam: ₺0';
+                checkoutBtn.style.display = 'none';
+                orderForm.style.display = 'none';
+                return;
+            }
+            
+            checkoutBtn.style.display = 'block';
+            basketItems.innerHTML = '';
+            let total = 0;
+            
+            basket.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const basketItem = document.createElement('div');
+                basketItem.className = 'basket-item';
+                basketItem.innerHTML = `
+                    <div class="basket-item-info">
+                        <div class="basket-item-icon" style="background-image: url('${fruitInfo[item.name].image}')"></div>
+                        <div>
+                            <div>${item.name}</div>
+                            <div>₺${item.price} / kg</div>
+                        </div>
+                    </div>
+                    <div class="basket-item-controls">
+                        <button class="quantity-btn decrease-btn" data-index="${index}">-</button>
+                        <span>${item.quantity} kg</span>
+                        <button class="quantity-btn increase-btn" data-index="${index}">+</button>
+                        <button class="quantity-btn remove-btn" data-index="${index}"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                
+                basketItems.appendChild(basketItem);
+            });
+            
+            basketTotal.textContent = `Toplam: ₺${total}`;
+            
+            // Sepet olay dinleyicileri
+            document.querySelectorAll('.decrease-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    if (basket[index].quantity > 1) {
+                        basket[index].quantity--;
+                    } else {
+                        basket.splice(index, 1);
+                    }
+                    saveBasket();
+                    renderBasket();
+                    updateBasketCount();
+                });
+            });
+            
+            document.querySelectorAll('.increase-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    basket[index].quantity++;
+                    saveBasket();
+                    renderBasket();
+                    updateBasketCount();
+                });
+            });
+            
+            document.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    basket.splice(index, 1);
+                    saveBasket();
+                    renderBasket();
+                    updateBasketCount();
+                });
+            });
+        }
+
+        // Sepeti localStorage'a kaydet
+        function saveBasket() {
+            localStorage.setItem('tropikoBasket', JSON.stringify(basket));
+        }
+
+        // Sepete ürün ekle
+        function addToBasket(name, price) {
+            const existingItem = basket.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                basket.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            saveBasket();
+            updateBasketCount();
+            showNotification(`${name} sepete eklendi!`);
+        }
+
+        // Siparişi tamamla
+        function completeOrder() {
+            const name = document.getElementById('orderName').value;
+            const email = document.getElementById('orderEmail').value;
+            const phone = document.getElementById('orderPhone').value;
+            const address = document.getElementById('orderAddress').value;
+            const language = document.getElementById('orderLanguage').value;
+            const notes = document.getElementById('orderNotes').value;
+            
+            if (!name || !email || !phone || !address || !language) {
+                showNotification('Lütfen tüm zorunlu alanları doldurunuz', 'error');
+                return;
+            }
+            
+            // Sepet içeriğini hazırla
+            const orderItems = basket.map(item => `${item.name} - ${item.quantity} kg - ₺${item.price * item.quantity}`).join('\n');
+            const total = basket.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // E-posta içeriği
+            const subject = `Yeni Sipariş - ${name}`;
+            const body = `İsim: ${name}
+E-posta: ${email}
+Telefon: ${phone}
+Adres: ${address}
+Tercih Edilen İletişim Dili: ${language}
+Ek Notlar: ${notes || 'Yok'}
+
+Sipariş Edilen Ürünler:
+${orderItems}
+
+Toplam Tutar: ₺${total}
+
+Bu sipariş Tropiko web sitesinden oluşturulmuştur.`;
+            
+            // E-posta gönder
+            window.open(`mailto:3748372616@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+            
+            // Bildirim göster
+            showNotification('Siparişiniz alındı! E-posta uygulamanız açılıyor...');
+            
+            // Sepeti temizle
+            basket = [];
+            saveBasket();
+            updateBasketCount();
+            renderBasket();
+            
+            // Modal'ı kapat
+            basketModal.style.display = 'none';
+            orderForm.style.display = 'none';
+            
+            // Formu temizle
+            document.getElementById('orderName').value = '';
+            document.getElementById('orderEmail').value = '';
+            document.getElementById('orderPhone').value = '';
+            document.getElementById('orderAddress').value = '';
+            document.getElementById('orderLanguage').value = '';
+            document.getElementById('orderNotes').value = '';
+        }
 
         document.addEventListener('DOMContentLoaded', function() {
             const products = document.querySelectorAll('.product');
@@ -1230,24 +1645,72 @@
             // Scroll event listener
             window.addEventListener('scroll', checkScroll);
             
+            // Sepet işlevselliği
+            updateBasketCount();
+            
+            // Sepet butonuna tıklama
+            basketBtn.addEventListener('click', function() {
+                renderBasket();
+                basketModal.style.display = 'flex';
+            });
+            
+            // Sepete ekle butonları
+            document.querySelectorAll('.add-to-basket').forEach(button => {
+                button.addEventListener('click', function() {
+                    const fruit = this.getAttribute('data-fruit');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    addToBasket(fruit, price);
+                });
+            });
+            
+            // Ödeme butonu
+            checkoutBtn.addEventListener('click', function() {
+                orderForm.style.display = 'block';
+            });
+            
+            // Siparişi tamamla butonu
+            orderSubmit.addEventListener('click', completeOrder);
+            
             // Modal işlemleri
             const infoModal = document.getElementById('infoModal');
-            const buyModal = document.getElementById('buyModal');
             const closeModals = document.querySelectorAll('.close-modal');
-            const whatsappBtn = document.getElementById('whatsappBtn');
-            const emailBtn = document.getElementById('emailBtn');
-            const whatsappForm = document.getElementById('whatsappForm');
-            const emailForm = document.getElementById('emailForm');
-            const sendWhatsapp = document.getElementById('sendWhatsapp');
-            const sendEmail = document.getElementById('sendEmail');
-            const notification = document.getElementById('notification');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalText = document.getElementById('modalText');
-            const buyModalTitle = document.getElementById('buyModalTitle');
             
-            let selectedFruit = '';
+            // Bilgi butonlarına tıklama
+            document.querySelectorAll('.info-btn').forEach(button => {
+                if (!button.classList.contains('add-to-basket')) {
+                    button.addEventListener('click', function() {
+                        const fruit = this.getAttribute('data-fruit');
+                        const type = this.getAttribute('data-type');
+                        
+                        if (type) {
+                            // Bilgi modalını göster
+                            modalTitle.textContent = fruit + ' Hakkında';
+                            modalText.textContent = fruitInfo[fruit][type];
+                            infoModal.style.display = 'flex';
+                        }
+                    });
+                }
+            });
             
-            // Form doğrulama için
+            // Modal'ları kapatma
+            closeModals.forEach(closeBtn => {
+                closeBtn.addEventListener('click', function() {
+                    infoModal.style.display = 'none';
+                    basketModal.style.display = 'none';
+                    orderForm.style.display = 'none';
+                });
+            });
+            
+            // Dışarı tıklayınca modal'ları kapat
+            window.addEventListener('click', function(event) {
+                if (event.target === infoModal || event.target === basketModal) {
+                    infoModal.style.display = 'none';
+                    basketModal.style.display = 'none';
+                    orderForm.style.display = 'none';
+                }
+            });
+            
+            // İletişim formu doğrulama
             const contactForm = document.querySelector('.contact-form-grid');
             const contactSubmit = document.getElementById('contact-submit');
             const nameInput = document.getElementById('name');
@@ -1257,101 +1720,6 @@
             const emailError = document.getElementById('email-error');
             const productError = document.getElementById('product-error');
             
-            // Bilgi butonlarına tıklama
-            document.querySelectorAll('.info-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const fruit = this.getAttribute('data-fruit');
-                    const type = this.getAttribute('data-type');
-                    
-                    if (type) {
-                        // Bilgi modalını göster
-                        selectedFruit = fruit;
-                        modalTitle.textContent = fruit + ' Hakkında';
-                        modalText.textContent = fruitInfo[fruit][type];
-                        infoModal.style.display = 'flex';
-                    } else {
-                        // Satın alma modalını göster
-                        selectedFruit = fruit;
-                        buyModalTitle.textContent = fruit + ' Satın Al';
-                        buyModal.style.display = 'flex';
-                    }
-                });
-            });
-            
-            // Modal'ları kapatma
-            closeModals.forEach(closeBtn => {
-                closeBtn.addEventListener('click', function() {
-                    infoModal.style.display = 'none';
-                    buyModal.style.display = 'none';
-                    whatsappForm.style.display = 'none';
-                    emailForm.style.display = 'none';
-                });
-            });
-            
-            // WhatsApp butonuna tıklama
-            whatsappBtn.addEventListener('click', function() {
-                whatsappForm.style.display = 'block';
-                emailForm.style.display = 'none';
-            });
-            
-            // E-posta butonuna tıklama
-            emailBtn.addEventListener('click', function() {
-                emailForm.style.display = 'block';
-                whatsappForm.style.display = 'none';
-            });
-            
-            // WhatsApp mesaj gönderme
-            sendWhatsapp.addEventListener('click', function() {
-                const message = document.querySelector('#whatsappForm textarea').value;
-                if (message.trim() === '') {
-                    showNotification('Lütfen bir mesaj yazın', 'error');
-                    return;
-                }
-                
-                const fullMessage = `Merhaba, ${selectedFruit} satın almak istiyorum. Mesajım: ${message}`;
-                const encodedMessage = encodeURIComponent(fullMessage);
-                
-                // WhatsApp'ın cihazda yüklü olup olmadığını kontrol etmek için
-                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                
-                if (isMobile) {
-                    window.open(`whatsapp://send?phone=+903748372626&text=${encodedMessage}`);
-                } else {
-                    showNotification('WhatsApp masaüstü cihazlarda desteklenmiyor. Lütfen telefonunuzu kullanın.', 'error');
-                }
-                
-                showNotification('Mesajınız WhatsApp ile gönderiliyor...');
-                
-                setTimeout(() => {
-                    buyModal.style.display = 'none';
-                    whatsappForm.style.display = 'none';
-                    document.querySelector('#whatsappForm textarea').value = '';
-                }, 2000);
-            });
-            
-            // E-posta gönderme
-            sendEmail.addEventListener('click', function() {
-                const message = document.querySelector('#emailForm textarea').value;
-                if (message.trim() === '') {
-                    showNotification('Lütfen bir mesaj yazın', 'error');
-                    return;
-                }
-                
-                const subject = `${selectedFruit} Satın Alma İsteği`;
-                const body = `Merhaba, ${selectedFruit} satın almak istiyorum. Mesajım: ${message}`;
-                
-                window.open(`mailto:3748372616@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
-                
-                showNotification('E-posta uygulamanız açılıyor...');
-                
-                setTimeout(() => {
-                    buyModal.style.display = 'none';
-                    emailForm.style.display = 'none';
-                    document.querySelector('#emailForm textarea').value = '';
-                }, 2000);
-            });
-            
-            // İletişim formu doğrulama
             contactSubmit.addEventListener('click', function(e) {
                 e.preventDefault();
                 let isValid = true;
@@ -1388,33 +1756,24 @@
                     showNotification('Lütfen gerekli alanları doldurunuz', 'error');
                 }
             });
+        });
+        
+        // Bildirim gösterme
+        function showNotification(text, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = text;
+            notification.style.display = 'block';
             
-            // Bildirim gösterme
-            function showNotification(text, type = 'success') {
-                notification.textContent = text;
-                notification.style.display = 'block';
-                
-                if (type === 'error') {
-                    notification.style.background = 'linear-gradient(to right, #ff4757, #ff6b6b)';
-                } else {
-                    notification.style.background = 'linear-gradient(to right, #ff7e5f, #feb47b)';
-                }
-                
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 3000);
+            if (type === 'error') {
+                notification.style.background = 'linear-gradient(to right, #ff4757, #ff6b6b)';
+            } else {
+                notification.style.background = 'linear-gradient(to right, #ff7e5f, #feb47b)';
             }
             
-            // Dışarı tıklayınca modal'ları kapat
-            window.addEventListener('click', function(event) {
-                if (event.target === infoModal || event.target === buyModal) {
-                    infoModal.style.display = 'none';
-                    buyModal.style.display = 'none';
-                    whatsappForm.style.display = 'none';
-                    emailForm.style.display = 'none';
-                }
-            });
-        });
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
     </script>
 </body>
 </html>
