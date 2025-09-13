@@ -15,7 +15,7 @@
         }
         
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/forest.svg');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./images/forest.svg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -27,9 +27,11 @@
         }
         
         header {
-            background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+            background: linear-gradient(rgba(255, 165, 0, 0.8), rgba(255, 140, 0, 0.8)), url('./images/sunny.svg');
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 20px 0;
+            padding: 40px 0;
             text-align: center;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
             position: relative;
@@ -46,8 +48,8 @@
         }
         
         .logo {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
+            font-size: 4rem;
+            margin-bottom: 15px;
             color: #fff;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             animation: pulse 2s infinite;
@@ -60,31 +62,34 @@
         }
         
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
             font-weight: 700;
             letter-spacing: 1px;
             font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .tagline {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
             font-style: italic;
             font-weight: 300;
+            max-width: 600px;
+            line-height: 1.6;
         }
         
         .container {
             max-width: 1200px;
-            margin: 30px auto;
+            margin: 40px auto;
             padding: 0 20px;
             flex: 1;
         }
         
         .intro {
             text-align: center;
-            margin-bottom: 60px;
-            padding: 40px;
+            margin-bottom: 80px;
+            padding: 50px;
             background: linear-gradient(135deg, rgba(86, 171, 47, 0.9) 0%, rgba(168, 224, 99, 0.9) 100%);
             border-radius: 20px;
             color: white;
@@ -110,8 +115,8 @@
         }
         
         .intro h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            margin-bottom: 25px;
             font-weight: 700;
             position: relative;
             z-index: 1;
@@ -120,7 +125,7 @@
         }
         
         .intro p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             line-height: 1.8;
             max-width: 800px;
             margin: 0 auto;
@@ -128,158 +133,125 @@
             z-index: 1;
         }
         
-        .fruits-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 60px;
-            perspective: 1000px;
-        }
-        
-        .fruit-bubble {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
+        .products-showcase {
             display: flex;
             flex-direction: column;
+            gap: 80px;
+            margin-top: 60px;
+        }
+        
+        .product {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.8s ease;
+            max-height: 400px;
+        }
+        
+        .product:nth-child(even) {
+            flex-direction: row-reverse;
+            transform: translateX(100px);
+        }
+        
+        .product.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .product-image {
+            flex: 1;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transition: all 0.5s ease;
-            opacity: 0;
-            box-shadow: 
-                0 20px 35px rgba(0, 0, 0, 0.2),
-                inset 0 -10px 20px rgba(0, 0, 0, 0.1),
-                inset 0 10px 20px rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            margin: 15px;
         }
         
-        .fruit-bubble:nth-child(odd) {
-            transform: translateX(-100px) rotate(-5deg);
-        }
-        
-        .fruit-bubble:nth-child(even) {
-            transform: translateX(100px) rotate(5deg);
-        }
-        
-        .fruit-bubble.visible {
-            opacity: 1;
-            transform: translateY(0) rotate(0) scale(1);
-        }
-        
-        .fruit-bubble:hover {
-            transform: translateY(-15px) scale(1.05) rotate(3deg);
-            box-shadow: 
-                0 30px 50px rgba(0, 0, 0, 0.3),
-                inset 0 -10px 20px rgba(0, 0, 0, 0.1),
-                inset 0 10px 20px rgba(255, 255, 255, 0.4);
-        }
-        
-        .fruit-bubble::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
-            transform: rotate(30deg);
-            z-index: 1;
-        }
-        
-        .fruit-bubble::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            bottom: 10px;
-            left: 10px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .fruit-image {
-            width: 140px;
-            height: 140px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
-            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
-            transition: all 0.4s ease;
-        }
-        
-        .fruit-bubble:hover .fruit-image {
-            transform: scale(1.1) translateY(-5px);
-        }
-        
-        .fruit-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            padding: 0 15px;
-        }
-        
-        .fruit-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: white;
-            font-weight: 700;
-            position: relative;
-            font-family: 'Playfair Display', serif;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .fruit-buttons {
+        .product-content {
+            flex: 1;
+            padding: 40px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
+        }
+        
+        .product-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+        
+        .product-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            border-radius: 2px;
+        }
+        
+        .product-description {
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .product-features {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
+        }
+        
+        .feature {
+            background: #f8f8f8;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .feature i {
+            color: #56ab2f;
+        }
+        
+        .product-buttons {
+            display: flex;
+            gap: 15px;
         }
         
         .info-btn {
-            padding: 10px 15px;
+            padding: 15px 25px;
             border: none;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-        
-        .info-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            z-index: -1;
-        }
-        
-        .info-btn:hover::before {
-            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .info-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         
         .taste-btn {
@@ -298,60 +270,70 @@
         }
         
         /* Her meyve için farklı renkler */
-        .fruit-bubble.limon {
-            background: linear-gradient(135deg, #C4E538, #009432);
+        .product.limon .product-image {
+            background: #f5f8e0;
         }
         
-        .fruit-bubble.avakado {
-            background: linear-gradient(135deg, #A3CB38, #006266);
+        .product.limon .product-content h3::after {
+            background: #c4e538;
         }
         
-        .fruit-bubble.ejdermeyvesi {
-            background: linear-gradient(135deg, #FDA7DF, #9980FA);
+        .product.avakado .product-image {
+            background: #e8f5d9;
         }
         
-        .fruit-bubble.kivi {
-            background: linear-gradient(135deg, #B53471, #833471);
+        .product.avakado .product-content h3::after {
+            background: #a3cb38;
         }
         
-        .fruit-bubble.ananas {
-            background: linear-gradient(135deg, #FFC312, #EE5A24);
+        .product.ejdermeyvesi .product-image {
+            background: #fce4f7;
         }
         
-        /* Baloncuk içindeki küçük parıltılar */
-        .bubble-sparkle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
+        .product.ejdermeyvesi .product-content h3::after {
+            background: #fda7df;
+        }
+        
+        .product.kivi .product-image {
+            background: #f9e6ef;
+        }
+        
+        .product.kivi .product-content h3::after {
+            background: #b53471;
+        }
+        
+        .product.ananas .product-image {
+            background: #fff0d9;
+        }
+        
+        .product.ananas .product-content h3::after {
+            background: #ffc312;
+        }
+        
+        .product-icon {
+            font-size: 10rem;
+            opacity: 0.8;
             z-index: 1;
         }
         
-        .bubble-sparkle:nth-child(1) {
-            width: 20px;
-            height: 20px;
-            top: 30px;
-            left: 40px;
+        .product.limon .product-icon {
+            color: #c4e538;
         }
         
-        .bubble-sparkle:nth-child(2) {
-            width: 15px;
-            height: 15px;
-            bottom: 50px;
-            right: 30px;
+        .product.avakado .product-icon {
+            color: #a3cb38;
         }
         
-        .bubble-sparkle:nth-child(3) {
-            width: 10px;
-            height: 10px;
-            top: 70px;
-            right: 50px;
+        .product.ejdermeyvesi .product-icon {
+            color: #fda7df;
         }
         
-        .bubble-sparkle:nth-child(4) {
-            width: 12px;
-            height: 12px;
-            bottom: 30px;
-            left: 50px;
+        .product.kivi .product-icon {
+            color: #b53471;
+        }
+        
+        .product.ananas .product-icon {
+            color: #ffc312;
         }
         
         .modal {
@@ -373,7 +355,7 @@
             border-radius: 25px;
             padding: 40px;
             width: 90%;
-            max-width: 550px;
+            max-width: 600px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
             position: relative;
             max-height: 80vh;
@@ -786,17 +768,46 @@
             .contact-submit {
                 grid-column: span 1;
             }
+            
+            .product, .product:nth-child(even) {
+                flex-direction: column;
+                max-height: unset;
+                transform: translateY(50px);
+            }
+            
+            .product-image {
+                min-height: 300px;
+                width: 100%;
+            }
         }
         
         @media (max-width: 768px) {
-            .fruit-bubble {
-                width: 250px;
-                height: 250px;
+            .header-content h1 {
+                font-size: 2.5rem;
             }
             
-            .fruit-image {
-                width: 110px;
-                height: 110px;
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .intro {
+                padding: 30px;
+            }
+            
+            .intro h2 {
+                font-size: 2.2rem;
+            }
+            
+            .intro p {
+                font-size: 1.1rem;
+            }
+            
+            .product-content h3 {
+                font-size: 2rem;
+            }
+            
+            .product-buttons {
+                flex-direction: column;
             }
             
             .contact-options {
@@ -807,35 +818,91 @@
             .footer-section {
                 min-width: 100%;
             }
-            
-            .intro h2 {
-                font-size: 2rem;
-            }
-            
-            .intro p {
-                font-size: 1.1rem;
-            }
-            
-            .fruit-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .info-btn {
-                width: 100%;
-                max-width: 200px;
-            }
+        }
+
+        /* Yeni eklenen stiller */
+        .tropical-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23FF9A8B" opacity="0.1" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
+            background-repeat: repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .company-info {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .company-info p {
+            margin-bottom: 8px;
+        }
+        
+        .leaf-decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23a8e063" opacity="0.3" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .leaf-1 {
+            top: 10%;
+            left: 5%;
+            transform: rotate(-15deg);
+        }
+        
+        .leaf-2 {
+            bottom: 15%;
+            right: 5%;
+            transform: rotate(75deg);
+        }
+        
+        .champion-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            animation: badgePulse 2s infinite;
+        }
+        
+        @keyframes badgePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
+    <div class="tropical-pattern"></div>
+    <div class="leaf-decoration leaf-1"></div>
+    <div class="leaf-decoration leaf-2"></div>
+    
     <header>
         <div class="header-content">
             <div class="logo">
                 <i class="fas fa-pineapple"></i>
             </div>
             <h1>Tropiko</h1>
-            <p class="tagline">Tropikal Lezzetler Kapınızda!</p>
+            <p class="tagline">Tropikal Lezzetler Kapınızda! Doğanın en seçkin tropikal meyve ve sebzeleri özenle yetiştirilip sofralarınıza ulaştırılıyor.</p>
         </div>
     </header>
 
@@ -845,88 +912,143 @@
             <p>Tropiko olarak, en taze ve lezzetli tropikal meyve ve sebzeleri sizlere sunmaktan gurur duyuyoruz. Sağlıklı yaşam için doğanın bize sunduğu bu nimetleri evinize getiriyoruz.</p>
         </div>
 
-        <div class="fruits-container">
+        <div class="products-showcase">
             <!-- Limon -->
-            <div class="fruit-bubble limon">
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="fruit-image" style="background-image: url('/images/limon.svg');"></div>
-                <div class="fruit-content">
+            <div class="product limon">
+                <div class="product-image">
+                    <i class="product-icon fas fa-lemon"></i>
+                    <div class="champion-badge">C Vitamini Şampiyonu</div>
+                </div>
+                <div class="product-content">
                     <h3>Limon</h3>
-                    <div class="fruit-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Limon" data-type="taste">Nasıl Tadır?</button>
-                        <button class="info-btn health-btn" data-fruit="Limon" data-type="health">Neden Sağlıklı?</button>
-                        <button class="info-btn buy-btn" data-fruit="Limon">Sipariş Ver</button>
+                    <p class="product-description">Tropikal limonlar, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcı bir etkisi vardır.</p>
+                    <div class="product-features">
+                        <div class="feature"><i class="fas fa-star"></i> C Vitamini Deposu</div>
+                        <div class="feature"><i class="fas fa-star"></i> Bağışıklık Güçlendirici</div>
+                        <div class="feature"><i class="fas fa-star"></i> Antioksidan Kaynağı</div>
+                    </div>
+                    <div class="product-buttons">
+                        <button class="info-btn taste-btn" data-fruit="Limon" data-type="taste">
+                            <i class="fas fa-utensils"></i> Tadı
+                        </button>
+                        <button class="info-btn health-btn" data-fruit="Limon" data-type="health">
+                            <i class="fas fa-heart"></i> Sağlık
+                        </button>
+                        <button class="info-btn buy-btn" data-fruit="Limon">
+                            <i class="fas fa-shopping-cart"></i> Satın Al
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Avokado -->
-            <div class="fruit-bubble avakado">
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="fruit-image" style="background-image: url('/images/avakado.svg');"></div>
-                <div class="fruit-content">
+            <div class="product avakado">
+                <div class="product-image">
+                    <i class="product-icon fas fa-leaf"></i>
+                    <div class="champion-badge">Sağlıklı Yağ Şampiyonu</div>
+                </div>
+                <div class="product-content">
                     <h3>Avokado</h3>
-                    <div class="fruit-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Avokado" data-type="taste">Nasıl Tadır?</button>
-                        <button class="info-btn health-btn" data-fruit="Avokado" data-type="health">Neden Sağlıklı?</button>
-                        <button class="info-btn buy-btn" data-fruit="Avokado">Sipariş Ver</button>
+                    <p class="product-description">Kremamsı, zengin ve hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır.</p>
+                    <div class="product-features">
+                        <div class="feature"><i class="fas fa-star"></i> Sağlıklı Yağ Kaynağı</div>
+                        <div class="feature"><i class="fas fa-star"></i> Kalp Dostu</div>
+                        <div class="feature"><i class="fas fa-star"></i> Vitamin Deposu</div>
+                    </div>
+                    <div class="product-buttons">
+                        <button class="info-btn taste-btn" data-fruit="Avokado" data-type="taste">
+                            <i class="fas fa-utensils"></i> Tadı
+                        </button>
+                        <button class="info-btn health-btn" data-fruit="Avokado" data-type="health">
+                            <i class="fas fa-heart"></i> Sağlık
+                        </button>
+                        <button class="info-btn buy-btn" data-fruit="Avokado">
+                            <i class="fas fa-shopping-cart"></i> Satın Al
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Ejder Meyvesi -->
-            <div class="fruit-bubble ejdermeyvesi">
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="fruit-image" style="background-image: url('/images/ejdermeyvesi.svg');"></div>
-                <div class="fruit-content">
+            <div class="product ejdermeyvesi">
+                <div class="product-image">
+                    <i class="product-icon fas fa-dragon"></i>
+                    <div class="champion-badge">Antioksidan Şampiyonu</div>
+                </div>
+                <div class="product-content">
                     <h3>Ejder Meyvesi</h3>
-                    <div class="fruit-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Ejder Meyvesi" data-type="taste">Nasıl Tadır?</button>
-                        <button class="info-btn health-btn" data-fruit="Ejder Meyvesi" data-type="health">Neden Sağlıklı?</button>
-                        <button class="info-btn buy-btn" data-fruit="Ejder Meyvesi">Sipariş Ver</button>
+                    <p class="product-description">Hafif tatlı ve ferahlatıcı bir tada sahiptir. Kivi ve armut karışımı bir lezzeti vardır.</p>
+                    <div class="product-features">
+                        <div class="feature"><i class="fas fa-star"></i> Antioksidan Zengini</div>
+                        <div class="feature"><i class="fas fa-star"></i> Bağırsak Dostu</div>
+                        <div class="feature"><i class="fas fa-star"></i> Demir Kaynağı</div>
+                    </div>
+                    <div class="product-buttons">
+                        <button class="info-btn taste-btn" data-fruit="Ejder Meyvesi" data-type="taste">
+                            <i class="fas fa-utensils"></i> Tadı
+                        </button>
+                        <button class="info-btn health-btn" data-fruit="Ejder Meyvesi" data-type="health">
+                            <i class="fas fa-heart"></i> Sağlık
+                        </button>
+                        <button class="info-btn buy-btn" data-fruit="Ejder Meyvesi">
+                            <i class="fas fa-shopping-cart"></i> Satın Al
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Kivi -->
-            <div class="fruit-bubble kivi">
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="fruit-image" style="background-image: url('/images/kivi.svg');"></div>
-                <div class="fruit-content">
+            <div class="product kivi">
+                <div class="product-image">
+                    <i class="product-icon fas fa-kiwi-bird"></i>
+                    <div class="champion-badge">Sindirim Şampiyonu</div>
+                </div>
+                <div class="product-content">
                     <h3>Kivi</h3>
-                    <div class="fruit-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Kivi" data-type="taste">Nasıl Tadır?</button>
-                        <button class="info-btn health-btn" data-fruit="Kivi" data-type="health">Neden Sağlıklı?</button>
-                        <button class="info-btn buy-btn" data-fruit="Kivi">Sipariş Ver</button>
+                    <p class="product-description">Tropikal kivi tatlı ve hafif ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcıdır.</p>
+                    <div class="product-features">
+                        <div class="feature"><i class="fas fa-star"></i> C Vitamini Deposu</div>
+                        <div class="feature"><i class="fas fa-star"></i> Sindirim Dostu</div>
+                        <div class="feature"><i class="fas fa-star"></i> Uyku Kalitesi Artırıcı</div>
+                    </div>
+                    <div class="product-buttons">
+                        <button class="info-btn taste-btn" data-fruit="Kivi" data-type="taste">
+                            <i class="fas fa-utensils"></i> Tadı
+                        </button>
+                        <button class="info-btn health-btn" data-fruit="Kivi" data-type="health">
+                            <i class="fas fa-heart"></i> Sağlık
+                        </button>
+                        <button class="info-btn buy-btn" data-fruit="Kivi">
+                            <i class="fas fa-shopping-cart"></i> Satın Al
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Ananas -->
-            <div class="fruit-bubble ananas">
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="bubble-sparkle"></div>
-                <div class="fruit-image" style="background-image: url('/images/ananas.svg');"></div>
-                <div class="fruit-content">
+            <div class="product ananas">
+                <div class="product-image">
+                    <i class="product-icon fas fa-pineapple"></i>
+                    <div class="champion-badge">Enzym Şampiyonu</div>
+                </div>
+                <div class="product-content">
                     <h3>Ananas</h3>
-                    <div class="fruit-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Ananas" data-type="taste">Nasıl Tadır?</button>
-                        <button class="info-btn health-btn" data-fruit="Ananas" data-type="health">Neden Sağlıklı?</button>
-                        <button class="info-btn buy-btn" data-fruit="Ananas">Sipariş Ver</button>
+                    <p class="product-description">Tatlı, sulu ve hafif asidik bir tada sahiptir. Tropikal bir lezzet şöleni sunar.</p>
+                    <div class="product-features">
+                        <div class="feature"><i class="fas fa-star"></i> Bromelain Enzymi</div>
+                        <div class="feature"><i class="fas fa-star"></i> Sindirim Destekleyici</div>
+                        <div class="feature"><i class="fas fa-star"></i> Anti-inflamatuar</div>
+                    </div>
+                    <div class="product-buttons">
+                        <button class="info-btn taste-btn" data-fruit="Ananas" data-type="taste">
+                            <i class="fas fa-utensils"></i> Tadı
+                        </button>
+                        <button class="info-btn health-btn" data-fruit="Ananas" data-type="health">
+                            <i class="fas fa-heart"></i> Sağlık
+                        </button>
+                        <button class="info-btn buy-btn" data-fruit="Ananas">
+                            <i class="fas fa-shopping-cart"></i> Satın Al
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1021,6 +1143,14 @@
             <div class="footer-section">
                 <h3>Tropiko</h3>
                 <p>Tropikal lezzetleri en taze haliyle sizlere ulaştırıyoruz.</p>
+                <div class="company-info">
+                    <p><strong>ÖZYÜREKOĞLU TARIM YAŞ SEB.MEYV.TİC.LTD.ŞTİ.</strong></p>
+                    <p>ŞEHİT MUSTAFA MAH. İSMETPAŞA BULV.</p>
+                    <p>BALTALI İŞHANI NO:10 Tarsus/ Mersin (İçel)</p>
+                    <p>Tel: 8508236336</p>
+                    <p>Vergi Dairesi: KIZILMURAT</p>
+                    <p>VKN: 7180695955</p>
+                </div>
             </div>
             
             <div class="footer-section">
@@ -1050,7 +1180,7 @@
         </div>
         
         <div class="copyright">
-            &copy; 2023 Tropiko - Tüm Hakları Saklıdır.
+            &copy; 2025 ÖZYÜREKOĞLU TARIM YAŞ SEB.MEYV.TİC.LTD.ŞTİ. - Tüm Hakları Saklıdır.
         </div>
     </footer>
 
@@ -1079,15 +1209,26 @@
             }
         };
 
-        // Animasyon için meyve baloncuklarını sırayla göster
         document.addEventListener('DOMContentLoaded', function() {
-            const fruitBubbles = document.querySelectorAll('.fruit-bubble');
+            const products = document.querySelectorAll('.product');
             
-            fruitBubbles.forEach((bubble, index) => {
-                setTimeout(() => {
-                    bubble.classList.add('visible');
-                }, 300 * index);
-            });
+            // Scroll animasyonu
+            function checkScroll() {
+                products.forEach(product => {
+                    const productTop = product.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (productTop < windowHeight * 0.85) {
+                        product.classList.add('visible');
+                    }
+                });
+            }
+            
+            // İlk kontrol
+            checkScroll();
+            
+            // Scroll event listener
+            window.addEventListener('scroll', checkScroll);
             
             // Modal işlemleri
             const infoModal = document.getElementById('infoModal');
