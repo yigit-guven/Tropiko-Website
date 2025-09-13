@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tropiko - Tropikal Lezzetler</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -64,6 +64,7 @@
             margin-bottom: 10px;
             font-weight: 700;
             letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
         }
         
         .tagline {
@@ -83,8 +84,8 @@
         .intro {
             text-align: center;
             margin-bottom: 60px;
-            padding: 30px;
-            background: linear-gradient(135deg, rgba(86, 171, 47, 0.85) 0%, rgba(168, 224, 99, 0.85) 100%);
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(86, 171, 47, 0.9) 0%, rgba(168, 224, 99, 0.9) 100%);
             border-radius: 20px;
             color: white;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -93,6 +94,8 @@
             transform: translateY(20px);
             opacity: 0;
             animation: fadeInUp 1s forwards 0.5s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .intro::before {
@@ -107,11 +110,13 @@
         }
         
         .intro h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 20px;
-            font-weight: 600;
+            font-weight: 700;
             position: relative;
             z-index: 1;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .intro p {
@@ -129,110 +134,123 @@
             justify-content: center;
             gap: 40px;
             margin-top: 60px;
+            perspective: 1000px;
         }
         
-        .fruit-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            overflow: hidden;
-            width: 320px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(50px);
-            cursor: pointer;
+        .fruit-bubble {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            opacity: 0;
+            box-shadow: 
+                0 20px 35px rgba(0, 0, 0, 0.2),
+                inset 0 -10px 20px rgba(0, 0, 0, 0.1),
+                inset 0 10px 20px rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            margin: 15px;
         }
         
-        .fruit-card:nth-child(odd) {
+        .fruit-bubble:nth-child(odd) {
             transform: translateX(-100px) rotate(-5deg);
         }
         
-        .fruit-card:nth-child(even) {
+        .fruit-bubble:nth-child(even) {
             transform: translateX(100px) rotate(5deg);
         }
         
-        .fruit-card.visible {
+        .fruit-bubble.visible {
             opacity: 1;
             transform: translateY(0) rotate(0) scale(1);
         }
         
-        .fruit-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25);
+        .fruit-bubble:hover {
+            transform: translateY(-15px) scale(1.05) rotate(3deg);
+            box-shadow: 
+                0 30px 50px rgba(0, 0, 0, 0.3),
+                inset 0 -10px 20px rgba(0, 0, 0, 0.1),
+                inset 0 10px 20px rgba(255, 255, 255, 0.4);
+        }
+        
+        .fruit-bubble::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+            transform: rotate(30deg);
+            z-index: 1;
+        }
+        
+        .fruit-bubble::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            bottom: 10px;
+            left: 10px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            z-index: 1;
+            pointer-events: none;
         }
         
         .fruit-image {
-            height: 220px;
-            width: 100%;
-            background-size: 60%;
+            width: 140px;
+            height: 140px;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: #f9f9f9;
-            padding: 20px;
-            transition: all 0.5s ease;
+            margin-bottom: 20px;
             position: relative;
-            overflow: hidden;
+            z-index: 2;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+            transition: all 0.4s ease;
         }
         
-        .fruit-card:hover .fruit-image {
-            background-size: 70%;
-            transform: scale(1.05);
-        }
-        
-        .fruit-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 30%;
-            background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 100%);
+        .fruit-bubble:hover .fruit-image {
+            transform: scale(1.1) translateY(-5px);
         }
         
         .fruit-content {
-            padding: 25px;
+            text-align: center;
             position: relative;
+            z-index: 2;
+            padding: 0 15px;
         }
         
         .fruit-content h3 {
             font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #56ab2f;
-            text-align: center;
-            font-weight: 600;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: 700;
             position: relative;
-        }
-        
-        .fruit-content h3::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            margin: 10px auto;
-            border-radius: 3px;
-        }
-        
-        .fruit-content p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: 400;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .fruit-buttons {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
         }
         
         .info-btn {
-            padding: 14px;
+            padding: 10px 15px;
             border: none;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -240,6 +258,7 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
         
         .info-btn::before {
@@ -260,7 +279,7 @@
         
         .info-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         
         .taste-btn {
@@ -276,6 +295,63 @@
         .buy-btn {
             background: linear-gradient(to right, #FF5E7D, #FF8A8C);
             color: white;
+        }
+        
+        /* Her meyve için farklı renkler */
+        .fruit-bubble.limon {
+            background: linear-gradient(135deg, #C4E538, #009432);
+        }
+        
+        .fruit-bubble.avakado {
+            background: linear-gradient(135deg, #A3CB38, #006266);
+        }
+        
+        .fruit-bubble.ejdermeyvesi {
+            background: linear-gradient(135deg, #FDA7DF, #9980FA);
+        }
+        
+        .fruit-bubble.kivi {
+            background: linear-gradient(135deg, #B53471, #833471);
+        }
+        
+        .fruit-bubble.ananas {
+            background: linear-gradient(135deg, #FFC312, #EE5A24);
+        }
+        
+        /* Baloncuk içindeki küçük parıltılar */
+        .bubble-sparkle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .bubble-sparkle:nth-child(1) {
+            width: 20px;
+            height: 20px;
+            top: 30px;
+            left: 40px;
+        }
+        
+        .bubble-sparkle:nth-child(2) {
+            width: 15px;
+            height: 15px;
+            bottom: 50px;
+            right: 30px;
+        }
+        
+        .bubble-sparkle:nth-child(3) {
+            width: 10px;
+            height: 10px;
+            top: 70px;
+            right: 50px;
+        }
+        
+        .bubble-sparkle:nth-child(4) {
+            width: 12px;
+            height: 12px;
+            bottom: 30px;
+            left: 50px;
         }
         
         .modal {
@@ -437,6 +513,8 @@
             transform: translateY(30px);
             opacity: 0;
             animation: fadeInUp 1s forwards 1s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .contact-section::before {
@@ -469,10 +547,11 @@
             text-align: center;
             margin-bottom: 30px;
             color: #56ab2f;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             position: relative;
             z-index: 1;
+            font-family: 'Playfair Display', serif;
         }
         
         .contact-section h2::after {
@@ -491,6 +570,17 @@
             gap: 25px;
             position: relative;
             z-index: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
         }
         
         .contact-form-grid input,
@@ -538,6 +628,13 @@
         .contact-submit:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(255, 94, 125, 0.3);
+        }
+        
+        .error-message {
+            color: #ff4757;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
         }
         
         footer {
@@ -692,9 +789,14 @@
         }
         
         @media (max-width: 768px) {
-            .fruit-card {
-                width: 100%;
-                max-width: 380px;
+            .fruit-bubble {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .fruit-image {
+                width: 110px;
+                height: 110px;
             }
             
             .contact-options {
@@ -712,6 +814,16 @@
             
             .intro p {
                 font-size: 1.1rem;
+            }
+            
+            .fruit-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .info-btn {
+                width: 100%;
+                max-width: 200px;
             }
         }
     </style>
@@ -734,11 +846,15 @@
         </div>
 
         <div class="fruits-container">
-            <div class="fruit-card">
+            <!-- Limon -->
+            <div class="fruit-bubble limon">
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
                 <div class="fruit-image" style="background-image: url('/images/limon.svg');"></div>
                 <div class="fruit-content">
                     <h3>Limon</h3>
-                    <p>Bol C vitamini deposu tropikal limonlar. Tazelik ve ferahlık için...</p>
                     <div class="fruit-buttons">
                         <button class="info-btn taste-btn" data-fruit="Limon" data-type="taste">Nasıl Tadır?</button>
                         <button class="info-btn health-btn" data-fruit="Limon" data-type="health">Neden Sağlıklı?</button>
@@ -747,11 +863,15 @@
                 </div>
             </div>
 
-            <div class="fruit-card">
+            <!-- Avokado -->
+            <div class="fruit-bubble avakado">
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
                 <div class="fruit-image" style="background-image: url('/images/avakado.svg');"></div>
                 <div class="fruit-content">
                     <h3>Avokado</h3>
-                    <p>Kremamsı dokusu ve sağlıklı yağları ile avokado. Sağlık için...</p>
                     <div class="fruit-buttons">
                         <button class="info-btn taste-btn" data-fruit="Avokado" data-type="taste">Nasıl Tadır?</button>
                         <button class="info-btn health-btn" data-fruit="Avokado" data-type="health">Neden Sağlıklı?</button>
@@ -760,11 +880,15 @@
                 </div>
             </div>
 
-            <div class="fruit-card">
+            <!-- Ejder Meyvesi -->
+            <div class="fruit-bubble ejdermeyvesi">
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
                 <div class="fruit-image" style="background-image: url('/images/ejdermeyvesi.svg');"></div>
                 <div class="fruit-content">
                     <h3>Ejder Meyvesi</h3>
-                    <p>Egzotik görünümü ve antioksidan zengini ejder meyvesi.</p>
                     <div class="fruit-buttons">
                         <button class="info-btn taste-btn" data-fruit="Ejder Meyvesi" data-type="taste">Nasıl Tadır?</button>
                         <button class="info-btn health-btn" data-fruit="Ejder Meyvesi" data-type="health">Neden Sağlıklı?</button>
@@ -773,11 +897,15 @@
                 </div>
             </div>
 
-            <div class="fruit-card">
+            <!-- Kivi -->
+            <div class="fruit-bubble kivi">
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
                 <div class="fruit-image" style="background-image: url('/images/kivi.svg');"></div>
                 <div class="fruit-content">
                     <h3>Kivi</h3>
-                    <p>C vitamini deposu kivi. Bağışıklık sisteminiz için harika!</p>
                     <div class="fruit-buttons">
                         <button class="info-btn taste-btn" data-fruit="Kivi" data-type="taste">Nasıl Tadır?</button>
                         <button class="info-btn health-btn" data-fruit="Kivi" data-type="health">Neden Sağlıklı?</button>
@@ -786,11 +914,15 @@
                 </div>
             </div>
 
-            <div class="fruit-card">
+            <!-- Ananas -->
+            <div class="fruit-bubble ananas">
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
+                <div class="bubble-sparkle"></div>
                 <div class="fruit-image" style="background-image: url('/images/ananas.svg');"></div>
                 <div class="fruit-content">
                     <h3>Ananas</h3>
-                    <p>Tropikal lezzetin kralı ananas. Vitamin ve mineral kaynağı.</p>
                     <div class="fruit-buttons">
                         <button class="info-btn taste-btn" data-fruit="Ananas" data-type="taste">Nasıl Tadır?</button>
                         <button class="info-btn health-btn" data-fruit="Ananas" data-type="health">Neden Sağlıklı?</button>
@@ -803,19 +935,42 @@
         <div class="contact-section">
             <h2>İletişim ve Sipariş</h2>
             <div class="contact-form-grid">
-                <input type="text" placeholder="Adınız">
-                <input type="email" placeholder="E-posta Adresiniz">
-                <input type="tel" placeholder="Telefon Numaranız">
-                <select>
-                    <option value="">Ürün Seçin</option>
-                    <option value="Limon">Limon</option>
-                    <option value="Avokado">Avokado</option>
-                    <option value="Ejder Meyvesi">Ejder Meyvesi</option>
-                    <option value="Kivi">Kivi</option>
-                    <option value="Ananas">Ananas</option>
-                </select>
-                <textarea placeholder="Mesajınız"></textarea>
-                <button class="contact-submit">Gönder</button>
+                <div class="form-group">
+                    <label for="name">Adınız *</label>
+                    <input type="text" id="name" placeholder="Adınız ve soyadınız">
+                    <div class="error-message" id="name-error">Lütfen adınızı giriniz</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-posta Adresiniz *</label>
+                    <input type="email" id="email" placeholder="E-posta adresiniz">
+                    <div class="error-message" id="email-error">Lütfen geçerli bir e-posta adresi giriniz</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Telefon Numaranız</label>
+                    <input type="tel" id="phone" placeholder="Telefon numaranız">
+                </div>
+                
+                <div class="form-group">
+                    <label for="product">Ürün Seçin *</label>
+                    <select id="product">
+                        <option value="">Ürün Seçin</option>
+                        <option value="Limon">Limon</option>
+                        <option value="Avokado">Avokado</option>
+                        <option value="Ejder Meyvesi">Ejder Meyvesi</option>
+                        <option value="Kivi">Kivi</option>
+                        <option value="Ananas">Ananas</option>
+                    </select>
+                    <div class="error-message" id="product-error">Lütfen bir ürün seçiniz</div>
+                </div>
+                
+                <div class="form-group" style="grid-column: span 2;">
+                    <label for="message">Mesajınız</label>
+                    <textarea id="message" placeholder="Mesajınız"></textarea>
+                </div>
+                
+                <button class="contact-submit" id="contact-submit">Gönder</button>
             </div>
         </div>
     </div>
@@ -907,30 +1062,30 @@
                 health: "C vitamini deposu olan limon, bağışıklık sistemini güçlendirir, sindirime yardımcı olur ve cilt sağlığını korur. Ayrıca antioksidan özelliği vardır ve vücuttaki toksinlerin atılmasına yardımcı olur."
             },
             Avokado: {
-                taste: "Kremamsı, zengin và hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır. Salatalarda, tostlarda ve mezelerde kullanılabilir.",
+                taste: "Kremamsı, zengin ve hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır. Salatalarda, tostlarda ve mezelerde kullanılabilir.",
                 health: "Sağlıklı tekli doymamış yağlar içerir, kalp sağlığını destekler, lif açısından zengindir ve potasyum içeriği yüksektir. Ayrıca göz sağlığına faydalıdır ve kilo kontrolüne yardımcı olur."
             },
             "Ejder Meyvesi": {
-                taste: "Hafif tatlı và ferahlatıcı bir tada sahiptir. Kivi ve armut karışımı bir lezzeti vardır. Taze olarak tüketilebileceği gibi smoothie'lerde ve salatalarda da kullanılabilir.",
+                taste: "Hafif tatlı ve ferahlatıcı bir tada sahiptir. Kivi ve armut karışımı bir lezzeti vardır. Taze olarak tüketilebileceği gibi smoothie'lerde ve salatalarda da kullanılabilir.",
                 health: "Antioksidanlar, vitaminler ve minerallerle doludur. Bağırsak sağlığını destekler, demir içeriği yüksektir ve bağışıklık sistemini güçlendirir. Ayrıca cilt sağlığına da faydalıdır."
             },
             Kivi: {
-                taste: "Tropikal kivi tatlı ve hafif ekşi bir tada sahiptir. Ferahlatıcı và canlandırıcıdır. Taze olarak tüketilebileceği gibi meyve salatalarında ve tatlılarda da kullanılabilir.",
-                health: "C vitamini deposudur, sindirime yardımcı olur, uyku kalitesini artırır ve cilt sağlığını korur. Ayrıca astım semptomlarını hafifletmeye yardımcı olabilir ve kan şekeri kontrolüne katkıda bulunur."
+                taste: "Tropikal kivi tatlı ve hafif ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcıdır. Taze olarak tüketilebileceği gibi meyve salatalarında ve tatlılarda da kullanılabilir.",
+                health: "C vitamini deposudur, sindirime yardımcı olur, uyku kalitesini artırır ve cilt sağlığını korur. Ayrıca astım symptomlarını hafifletmeye yardımcı olabilir ve kan şekeri kontrolüne katkıda bulunur."
             },
             Ananas: {
-                taste: "Tatlı, sulu và hafif asidik bir tada sahiptir. Tropikal bir lezzet şöleni sunar. Taze olarak tüketilebileceği gibi yemeklerde, tatlılarda ve içeceklerde de kullanılabilir.",
+                taste: "Tatlı, sulu ve hafif asidik bir tada sahiptir. Tropikal bir lezzet şöleni sunar. Taze olarak tüketilebileceği gibi yemeklerde, tatlılarda ve içeceklerde de kullanılabilir.",
                 health: "Bromelain enzimi sayesinde sindirime yardımcı olur, anti-inflamatuar özellikleri vardır ve C vitamini deposudur. Ayrıca bağışıklık sistemini güçlendirir ve kemik sağlığını destekler."
             }
         };
 
-        // Animasyon için meyve kartlarını sırayla göster
+        // Animasyon için meyve baloncuklarını sırayla göster
         document.addEventListener('DOMContentLoaded', function() {
-            const fruitCards = document.querySelectorAll('.fruit-card');
+            const fruitBubbles = document.querySelectorAll('.fruit-bubble');
             
-            fruitCards.forEach((card, index) => {
+            fruitBubbles.forEach((bubble, index) => {
                 setTimeout(() => {
-                    card.classList.add('visible');
+                    bubble.classList.add('visible');
                 }, 300 * index);
             });
             
@@ -950,6 +1105,16 @@
             const buyModalTitle = document.getElementById('buyModalTitle');
             
             let selectedFruit = '';
+            
+            // Form doğrulama için
+            const contactForm = document.querySelector('.contact-form-grid');
+            const contactSubmit = document.getElementById('contact-submit');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const productSelect = document.getElementById('product');
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+            const productError = document.getElementById('product-error');
             
             // Bilgi butonlarına tıklama
             document.querySelectorAll('.info-btn').forEach(button => {
@@ -1045,6 +1210,44 @@
                 }, 2000);
             });
             
+            // İletişim formu doğrulama
+            contactSubmit.addEventListener('click', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                
+                // İsim doğrulama
+                if (nameInput.value.trim() === '') {
+                    nameError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    nameError.style.display = 'none';
+                }
+                
+                // E-posta doğrulama
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value)) {
+                    emailError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    emailError.style.display = 'none';
+                }
+                
+                // Ürün doğrulama
+                if (productSelect.value === '') {
+                    productError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    productError.style.display = 'none';
+                }
+                
+                if (isValid) {
+                    showNotification('Mesajınız gönderildi! En kısa sürede sizinle iletişime geçeceğiz.');
+                    contactForm.reset();
+                } else {
+                    showNotification('Lütfen gerekli alanları doldurunuz', 'error');
+                }
+            });
+            
             // Bildirim gösterme
             function showNotification(text, type = 'success') {
                 notification.textContent = text;
@@ -1069,12 +1272,6 @@
                     whatsappForm.style.display = 'none';
                     emailForm.style.display = 'none';
                 }
-            });
-            
-            // İletişim formu gönderme
-            document.querySelector('.contact-submit').addEventListener('click', function() {
-                showNotification('Mesajınız gönderildi! En kısa sürede sizinle iletişime geçeceğiz.');
-                document.querySelector('.contact-form-grid').reset();
             });
         });
     </script>
