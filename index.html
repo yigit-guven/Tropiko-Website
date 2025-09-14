@@ -3,492 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tropiko - Tropikal Lezzetler</title>
+    <title>Tropiko - Tropikal Meyve ve Sebzeler</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
         
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./images/forest.svg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-color: #f8f9fa;
             color: #333;
-            overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        header {
-            background: linear-gradient(rgba(30, 100, 50, 0.9), rgba(50, 150, 70, 0.9)), url('./images/sunny.svg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 10;
-        }
-        
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0 20px;
-        }
-        
-        .logo {
-            font-size: 4rem;
-            margin-bottom: 15px;
-            color: #fff;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-family: 'Playfair Display', serif;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            font-style: italic;
-            font-weight: 300;
-            max-width: 600px;
             line-height: 1.6;
-        }
-        
-        .discover-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 20px auto;
-            max-width: 1200px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .discover-section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #2E8B57;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .search-container {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .search-input {
-            flex: 1;
-            min-width: 250px;
-            padding: 15px 20px;
-            border: 2px solid #ddd;
-            border-radius: 50px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: #2E8B57;
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.2);
-        }
-        
-        .category-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        
-        .category-btn {
-            padding: 10px 20px;
-            background: #f1f1f1;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .category-btn.active, .category-btn:hover {
-            background: #2E8B57;
-            color: white;
         }
         
         .container {
             max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            flex: 1;
-        }
-        
-        .intro {
-            text-align: center;
-            margin-bottom: 80px;
-            padding: 50px;
-            background: linear-gradient(135deg, rgba(46, 139, 87, 0.9) 0%, rgba(144, 238, 144, 0.9) 100%);
-            border-radius: 20px;
-            color: white;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 1s forwards 0.5s;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .intro::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-            transform: rotate(30deg);
-        }
-        
-        .intro h2 {
-            font-size: 3rem;
-            margin-bottom: 25px;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-            font-family: 'Playfair Display', serif;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        .intro p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            padding: 0 20px;
         }
         
-        .products-showcase {
+        /* Header Styles */
+        header {
+            background-color: #2c5e1a;
+            color: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .header-content {
             display: flex;
             flex-direction: column;
-            gap: 80px;
-            margin-top: 60px;
-        }
-        
-        .product {
-            display: flex;
             align-items: center;
-            justify-content: space-between;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
+            text-align: center;
+        }
+        
+        .logo-container {
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            max-width: 300px;
+            height: auto;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #f1f1f1;
+            font-style: italic;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #3a7c23;
+            padding: 10px 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-link:hover {
+            background-color: #2c5e1a;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 40px 0;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            border-radius: 5px;
+        }
+        
+        .section-title {
+            font-family: 'Merriweather', serif;
+            color: #2c5e1a;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+            text-align: center;
+        }
+        
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: all 0.8s ease;
-            max-height: 400px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .product:nth-child(even) {
-            flex-direction: row-reverse;
-            transform: translateX(100px);
-        }
-        
-        .product.visible {
-            opacity: 1;
-            transform: translateX(0);
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .product-image {
-            flex: 1;
-            min-height: 400px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
+            height: 200px;
+            background-color: #f8f9fa;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        .product-content {
-            flex: 1;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .product-content h3 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #333;
-            font-weight: 700;
-            font-family: 'Playfair Display', serif;
-            position: relative;
-        }
-        
-        .product-content h3::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 70px;
-            height: 4px;
-            border-radius: 2px;
-        }
-        
-        .product-price {
-            font-size: 1.8rem;
-            color: #ff6a88;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        
-        .product-description {
-            color: #555;
-            margin-bottom: 30px;
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-        
-        .product-features {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .feature {
-            background: #f8f8f8;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .feature i {
-            color: #2E8B57;
-        }
-        
-        .product-buttons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .info-btn {
-            padding: 15px 25px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .info-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .taste-btn {
-            background: linear-gradient(to right, #FFC837, #FF8008);
-            color: white;
-        }
-        
-        .health-btn {
-            background: linear-gradient(to right, #2E8B57, #3CB371);
-            color: white;
-        }
-        
-        .buy-btn {
-            background: linear-gradient(to right, #FF5E7D, #FF8A8C);
-            color: white;
-        }
-        
-        /* Her meyve için farklı renkler */
-        .product.lime .product-image {
-            background: #f5f8e0;
-        }
-        
-        .product.lime .product-content h3::after {
-            background: #c4e538;
-        }
-        
-        .product.avakado .product-image {
-            background: #e8f5d9;
-        }
-        
-        .product.avakado .product-content h3::after {
-            background: #a3cb38;
-        }
-        
-        .product.ejdermeyvesi .product-image {
-            background: #fce4f7;
-        }
-        
-        .product.ejdermeyvesi .product-content h3::after {
-            background: #fda7df;
-        }
-        
-        .product.kivi .product-image {
-            background: #f9e6ef;
-        }
-        
-        .product.kivi .product-content h3::after {
-            background: #b53471;
-        }
-        
-        .product.mango .product-image {
-            background: #fff0d9;
-        }
-        
-        .product.mango .product-content h3::after {
-            background: #ffc312;
+            border-bottom: 1px solid #e9ecef;
         }
         
         .product-icon {
-            width: 180px;
-            height: 180px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 1;
+            width: 120px;
+            height: 120px;
         }
         
-        .product.lime .product-icon {
-            background-image: url('./images/limon.svg');
+        .product-info {
+            padding: 20px;
         }
         
-        .product.avakado .product-icon {
-            background-image: url('./images/avakado.svg');
+        .product-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2c5e1a;
         }
         
-        .product.ejdermeyvesi .product-icon {
-            background-image: url('./images/ejdermeyvesi.svg');
+        .product-price {
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
         
-        .product.kivi .product-icon {
-            background-image: url('./images/kivi.svg');
+        .product-description {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
         }
         
-        .product.mango .product-icon {
-            background-image: url('./images/mango.svg');
+        .product-features {
+            margin-bottom: 20px;
         }
         
-        /* Sepet stilleri */
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .feature i {
+            color: #28a745;
+            margin-right: 8px;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .action-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .info-btn {
+            background-color: #f8f9fa;
+            color: #495057;
+            border: 1px solid #e9ecef;
+        }
+        
+        .info-btn:hover {
+            background-color: #e9ecef;
+        }
+        
+        .buy-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .buy-btn:hover {
+            background-color: #218838;
+        }
+        
+        /* Basket Styles */
         .basket-container {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 100;
+            z-index: 1000;
         }
         
         .basket-btn {
-            background: linear-gradient(to right, #FF5E7D, #FF8A8C);
+            background-color: #28a745;
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 15px 25px;
-            font-weight: 600;
+            padding: 12px 20px;
+            font-weight: 500;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
         }
         
         .basket-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background-color: #218838;
         }
         
         .basket-count {
             background: white;
-            color: #FF5E7D;
+            color: #28a745;
             border-radius: 50%;
-            width: 25px;
-            height: 25px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
         }
         
-        .basket-modal {
+        /* Modal Styles */
+        .modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(5px);
         }
         
-        .basket-content {
+        .modal-content {
             background: white;
-            border-radius: 25px;
-            padding: 40px;
+            border-radius: 8px;
+            padding: 30px;
             width: 90%;
             max-width: 600px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
             max-height: 80vh;
             overflow-y: auto;
-            transform: scale(0.9);
-            opacity: 0;
-            animation: modalAppear 0.4s forwards;
+            position: relative;
         }
         
-        .basket-items {
-            margin: 20px 0;
-            max-height: 300px;
-            overflow-y: auto;
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6c757d;
         }
         
+        .modal-title {
+            font-family: 'Merriweather', serif;
+            color: #2c5e1a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        /* Basket Items */
         .basket-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #e9ecef;
         }
         
         .basket-item-info {
@@ -500,9 +309,6 @@
         .basket-item-icon {
             width: 40px;
             height: 40px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
         }
         
         .basket-item-controls {
@@ -512,267 +318,67 @@
         }
         
         .quantity-btn {
-            background: #f1f1f1;
-            border: none;
-            border-radius: 50%;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
             width: 30px;
             height: 30px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
         }
         
         .basket-total {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
             text-align: right;
             margin: 20px 0;
             padding-top: 20px;
-            border-top: 2px solid #eee;
+            border-top: 2px solid #e9ecef;
+        }
+        
+        .checkout-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
         }
         
         .checkout-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(to right, #2E8B57, #3CB371);
-            color: white;
+            padding: 12px 20px;
             border: none;
-            border-radius: 50px;
+            border-radius: 4px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: opacity 0.3s;
         }
         
         .checkout-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.3);
+            opacity: 0.9;
         }
         
-        .empty-basket {
-            text-align: center;
-            padding: 20px;
-            color: #888;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 25px;
-            padding: 40px;
-            width: 90%;
-            max-width: 600px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
-            max-height: 80vh;
-            overflow-y: auto;
-            transform: scale(0.9);
-            opacity: 0;
-            animation: modalAppear 0.4s forwards;
-        }
-        
-        @keyframes modalAppear {
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: #888;
-            transition: color 0.3s ease;
-        }
-        
-        .close-modal:hover {
-            color: #ff6a88;
-        }
-        
-        .contact-options {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 25px;
-            gap: 15px;
-        }
-        
-        .contact-btn {
-            padding: 15px 25px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            flex: 1;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            z-index: -1;
-        }
-        
-        .contact-btn:hover::before {
-            width: 100%;
-        }
-        
-        .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .whatsapp {
-            background: linear-gradient(to right, #25D366, #1EBEA5);
+        .email-btn {
+            background-color: #ea4335;
             color: white;
         }
         
-        .email {
-            background: linear-gradient(to right, #EA4335, #D14836);
+        .whatsapp-btn {
+            background-color: #25D366;
             color: white;
         }
         
+        /* Contact Form */
         .contact-form {
-            margin-top: 25px;
-            display: none;
-            animation: fadeIn 0.5s forwards;
-        }
-        
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #eee;
-            border-radius: 15px;
-            resize: vertical;
-            min-height: 120px;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: #2E8B57;
-        }
-        
-        .send-btn {
-            padding: 15px 30px;
-            background: linear-gradient(to right, #2E8B57, #3CB371);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            display: block;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .send-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.3);
-        }
-        
-        .contact-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 40px;
-            margin-top: 80px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            position: relative;
-            overflow: hidden;
-            transform: translateY(30px);
-            opacity: 0;
-            animation: fadeInUp 1s forwards 1s;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23FF9A8B" opacity="0.1" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-            z-index: 0;
-        }
-        
-        .contact-section::after {
-            content: '';
-            position: absolute;
-            bottom: -80px;
-            left: -80px;
-            width: 250px;
-            height: 250px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%232E8B57" opacity="0.1" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-            z-index: 0;
-        }
-        
-        .contact-section h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #2E8B57;
-            font-size: 2.5rem;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .contact-section h2::after {
-            content: '';
-            display: block;
-            width: 70px;
-            height: 4px;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-        
-        .contact-form-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-            position: relative;
-            z-index: 1;
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #e9ecef;
         }
         
         .form-group {
@@ -783,306 +389,74 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: #555;
         }
         
-        .contact-form-grid input,
-        .contact-form-grid textarea,
-        .contact-form-grid select {
+        .form-control {
             width: 100%;
-            padding: 16px 20px;
-            border: 2px solid #eee;
-            border-radius: 15px;
-            margin-bottom: 0;
+            padding: 10px 15px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
             font-size: 1rem;
-            transition: all 0.3s ease;
         }
         
-        .contact-form-grid input:focus,
-        .contact-form-grid textarea:focus,
-        .contact-form-grid select:focus {
+        .form-control:focus {
             outline: none;
-            border-color: #2E8B57;
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.1);
+            border-color: #28a745;
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
         }
         
-        .contact-form-grid textarea {
-            min-height: 150px;
-        }
-        
-        .contact-submit {
-            padding: 18px 35px;
-            background: linear-gradient(to right, #FF5E7D, #FF8A8C);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            margin: 10px auto;
-            width: 250px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 94, 125, 0.3);
-        }
-        
-        .error-message {
-            color: #ff4757;
-            font-size: 0.9rem;
-            margin-top: 5px;
-            display: none;
-        }
-        
-        .order-info {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            border-left: 4px solid #2E8B57;
-        }
-        
+        /* Footer */
         footer {
-            background: linear-gradient(135deg, #232323 0%, #3a3a3a 100%);
+            background-color: #2c3e50;
             color: white;
-            padding: 50px 0 25px;
-            margin-top: 80px;
-            position: relative;
+            padding: 40px 0 20px;
+            margin-top: 60px;
         }
         
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 0 20px;
-        }
-        
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
         
         .footer-section h3 {
-            font-size: 1.4rem;
+            font-family: 'Merriweather', serif;
             margin-bottom: 20px;
-            color: #3CB371;
-            font-weight: 600;
-            position: relative;
             padding-bottom: 10px;
-        }
-        
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            border-radius: 3px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
         .footer-links a {
             display: block;
             color: #ddd;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            padding-left: 15px;
-        }
-        
-        .footer-links a::before {
-            content: '➜';
-            position: absolute;
-            left: 0;
-            color: #3CB371;
-            transition: transform 0.3s ease;
         }
         
         .footer-links a:hover {
-            color: #3CB371;
-            transform: translateX(5px);
-        }
-        
-        .footer-links a:hover::before {
-            transform: translateX(3px);
+            color: white;
         }
         
         .social-icons a {
             display: inline-block;
-            margin-right: 20px;
             color: white;
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            color: #3CB371;
-            transform: translateY(-5px);
+            font-size: 1.5rem;
+            margin-right: 15px;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid #555;
-            color: #aaa;
-            font-size: 0.95rem;
-        }
-        
-        .notification {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 18px 30px;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            display: none;
-            z-index: 1001;
-            animation: notificationSlideIn 0.5s forwards;
-        }
-        
-        .whatsapp-contact {
-            text-align: center;
             margin-top: 40px;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
         }
         
-        .whatsapp-contact h3 {
-            margin-bottom: 20px;
-            color: #2E8B57;
-        }
-        
-        .whatsapp-contact p {
-            margin-bottom: 20px;
-            color: #555;
-        }
-        
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background: linear-gradient(to right, #25D366, #1EBEA5);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-        }
-        
-        @keyframes notificationSlideIn {
-            from {
-                transform: translateX(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @media (max-width: 968px) {
-            .contact-form-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-form-grid textarea {
-                grid-column: span 1;
-            }
-            
-            .contact-submit {
-                grid-column: span 1;
-            }
-            
-            .product, .product:nth-child(even) {
-                flex-direction: column;
-                max-height: unset;
-                transform: translateY(50px);
-            }
-            
-            .product-image {
-                min-height: 300px;
-                width: 100%;
-            }
-        }
-        
+        /* Responsive */
         @media (max-width: 768px) {
-            .header-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .tagline {
-                font-size: 1.2rem;
-            }
-            
-            .intro {
-                padding: 30px;
-            }
-            
-            .intro h2 {
-                font-size: 2.2rem;
-            }
-            
-            .intro p {
-                font-size: 1.1rem;
-            }
-            
-            .product-content h3 {
-                font-size: 2rem;
-            }
-            
-            .product-buttons {
-                flex-direction: column;
-            }
-            
-            .contact-options {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .footer-section {
-                min-width: 100%;
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
             
             .basket-container {
@@ -1091,104 +465,23 @@
             }
             
             .basket-btn {
-                padding: 12px 20px;
+                padding: 10px 15px;
                 font-size: 0.9rem;
             }
-        }
-
-        /* Yeni eklenen stiller */
-        .tropical-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23FF9A8B" opacity="0.1" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
-            background-repeat: repeat;
-            opacity: 0.1;
-            z-index: -1;
-        }
-        
-        .company-info {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        
-        .company-info p {
-            margin-bottom: 8px;
-        }
-        
-        .leaf-decoration {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%233CB371" opacity="0.3" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.3;
-            z-index: -1;
-        }
-        
-        .leaf-1 {
-            top: 10%;
-            left: 5%;
-            transform: rotate(-15deg);
-        }
-        
-        .leaf-2 {
-            bottom: 15%;
-            right: 5%;
-            transform: rotate(75deg);
-        }
-        
-        .champion-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 100%);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 2;
-            animation: badgePulse 2s infinite;
-        }
-        
-        @keyframes badgePulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .order-form {
-            display: none;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-        
-        .order-form-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        
-        .order-submit {
-            width: 100%;
+            
+            .product-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="tropical-pattern"></div>
-    <div class="leaf-decoration leaf-1"></div>
-    <div class="leaf-decoration leaf-2"></div>
-    
     <!-- Sepet butonu -->
     <div class="basket-container">
         <button class="basket-btn" id="basketBtn">
@@ -1198,319 +491,244 @@
     </div>
     
     <header>
-        <div class="header-content">
-            <div class="logo">
-                <i class="fas fa-pineapple"></i>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="./images/tropiko.svg" alt="Tropiko" class="logo">
+                    <p class="tagline">Tropikal Meyve ve Sebzeler - Doğanın En Seçkin Lezzetleri</p>
+                </div>
             </div>
-            <h1>Tropiko</h1>
-            <p class="tagline">Tropikal Lezzetler Kapınızda! Doğanın en seçkin tropikal meyve ve sebzeleri özenle yetiştirilip sofralarınıza ulaştırılıyor.</p>
         </div>
     </header>
-
-    <div class="discover-section">
-        <h2>Keşfet</h2>
-        <div class="search-container">
-            <input type="text" class="search-input" id="searchInput" placeholder="Meyve veya sebze adı ara...">
-            <button class="info-btn taste-btn" id="searchBtn">
-                <i class="fas fa-search"></i> Ara
-            </button>
+    
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="nav-link">Ana Sayfa</a>
+                <a href="#" class="nav-link">Ürünler</a>
+                <a href="#" class="nav-link">Hakkımızda</a>
+                <a href="#" class="nav-link">İletişim</a>
+            </div>
         </div>
-        <div class="category-filters">
-            <button class="category-btn active" data-category="all">Tümü</button>
-            <button class="category-btn" data-category="meyve">Meyveler</button>
-            <button class="category-btn" data-category="sebze">Sebzeler</button>
-            <button class="category-btn" data-category="tropikal">Tropikaller</button>
-        </div>
-    </div>
-
+    </nav>
+    
     <div class="container">
-        <div class="intro">
-            <h2>Tropikal Cennetten Lezzetler</h2>
-            <p>Tropiko olarak, en taze ve lezzetli tropikal meyve ve sebzeleri sizlere sunmaktan gurur duyuyoruz. Sağlıklı yaşam için doğanın bize sunduğu bu nimetleri evinize getiriyoruz.</p>
-        </div>
-
-        <div class="products-showcase">
-            <!-- Lime -->
-            <div class="product lime" data-category="meyve tropikal" data-name="lime">
-                <div class="product-image">
-                    <div class="product-icon"></div>
-                    <div class="champion-badge">C Vitamini Şampiyonu</div>
-                </div>
-                <div class="product-content">
-                    <h3>Lime</h3>
-                    <div class="product-price">₺180 / kg</div>
-                    <p class="product-description">Tropikal limeler, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcı bir etkisi vardır.</p>
-                    <div class="product-features">
-                        <div class="feature"><i class="fas fa-star"></i> C Vitamini Deposu</div>
-                        <div class="feature"><i class="fas fa-star"></i> Bağışıklık Güçlendirici</div>
-                        <div class="feature"><i class="fas fa-star"></i> Antioksidan Kaynağı</div>
+        <div class="main-content">
+            <h2 class="section-title">Tropikal Ürün Kataloğu</h2>
+            
+            <div class="products-grid">
+                <!-- Lime -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./images/limon.svg" alt="Lime" class="product-icon">
                     </div>
-                    <div class="product-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Lime" data-type="taste">
-                            <i class="fas fa-utensils"></i> Tadı
-                        </button>
-                        <button class="info-btn health-btn" data-fruit="Lime" data-type="health">
-                            <i class="fas fa-heart"></i> Sağlık
-                        </button>
-                        <button class="info-btn buy-btn add-to-basket" data-fruit="Lime" data-price="180">
-                            <i class="fas fa-cart-plus"></i> Sepete Ekle
-                        </button>
+                    <div class="product-info">
+                        <h3 class="product-title">Lime</h3>
+                        <div class="product-price">₺180 / kg</div>
+                        <p class="product-description">Tropikal limeler, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir.</p>
+                        
+                        <div class="product-features">
+                            <div class="feature"><i class="fas fa-check-circle"></i> C Vitamini Deposu</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Bağışıklık Güçlendirici</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Antioksidan Kaynağı</div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="action-btn info-btn" data-fruit="Lime" data-type="taste">
+                                <i class="fas fa-info-circle"></i> Detay
+                            </button>
+                            <button class="action-btn buy-btn add-to-basket" data-fruit="Lime" data-price="180" data-unit="kg">
+                                <i class="fas fa-cart-plus"></i> Sepete Ekle
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Avokado -->
-            <div class="product avakado" data-category="meyve tropikal" data-name="avokado">
-                <div class="product-image">
-                    <div class="product-icon"></div>
-                    <div class="champion-badge">Sağlıklı Yağ Şampiyonu</div>
-                </div>
-                <div class="product-content">
-                    <h3>Avokado</h3>
-                    <div class="product-price">₺65 / adet</div>
-                    <p class="product-description">Kremamsı, zengin ve hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır.</p>
-                    <div class="product-features">
-                        <div class="feature"><i class="fas fa-star"></i> Sağlıklı Yağ Kaynağı</div>
-                        <div class="feature"><i class="fas fa-star"></i> Kalp Dostu</div>
-                        <div class="feature"><i class="fas fa-star"></i> Vitamin Deposu</div>
+                
+                <!-- Avokado -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./images/avakado.svg" alt="Avokado" class="product-icon">
                     </div>
-                    <div class="product-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Avokado" data-type="taste">
-                            <i class="fas fa-utensils"></i> Tadı
-                        </button>
-                        <button class="info-btn health-btn" data-fruit="Avokado" data-type="health">
-                            <i class="fas fa-heart"></i> Sağlık
-                        </button>
-                        <button class="info-btn buy-btn add-to-basket" data-fruit="Avokado" data-price="65" data-unit="adet">
-                            <i class="fas fa-cart-plus"></i> Sepete Ekle
-                        </button>
+                    <div class="product-info">
+                        <h3 class="product-title">Avokado</h3>
+                        <div class="product-price">₺65 / adet</div>
+                        <p class="product-description">Kremamsı, zengin ve hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır.</p>
+                        
+                        <div class="product-features">
+                            <div class="feature"><i class="fas fa-check-circle"></i> Sağlıklı Yağ Kaynağı</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Kalp Dostu</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Vitamin Deposu</div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="action-btn info-btn" data-fruit="Avokado" data-type="taste">
+                                <i class="fas fa-info-circle"></i> Detay
+                            </button>
+                            <button class="action-btn buy-btn add-to-basket" data-fruit="Avokado" data-price="65" data-unit="adet">
+                                <i class="fas fa-cart-plus"></i> Sepete Ekle
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Ejder Meyvesi -->
-            <div class="product ejdermeyvesi" data-category="meyve tropikal" data-name="ejder meyvesi">
-                <div class="product-image">
-                    <div class="product-icon"></div>
-                    <div class="champion-badge">Antioksidan Şampiyonu</div>
-                </div>
-                <div class="product-content">
-                    <h3>Ejder Meyvesi</h3>
-                    <div class="product-price">₺75 / adet</div>
-                    <p class="product-description">Hafif tatlı ve ferahlatıcı bir tada sahiptir. Kivi ve armut karışımı bir lezzeti vardır.</p>
-                    <div class="product-features">
-                        <div class="feature"><i class="fas fa-star"></i> Antioksidan Zengini</div>
-                        <div class="feature"><i class="fas fa-star"></i> Bağırsak Dostu</div>
-                        <div class="feature"><i class="fas fa-star"></i> Demir Kaynağı</div>
+                
+                <!-- Ejder Meyvesi -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./images/ejdermeyvesi.svg" alt="Ejder Meyvesi" class="product-icon">
                     </div>
-                    <div class="product-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Ejder Meyvesi" data-type="taste">
-                            <i class="fas fa-utensils"></i> Tadı
-                        </button>
-                        <button class="info-btn health-btn" data-fruit="Ejder Meyvesi" data-type="health">
-                            <i class="fas fa-heart"></i> Sağlık
-                        </button>
-                        <button class="info-btn buy-btn add-to-basket" data-fruit="Ejder Meyvesi" data-price="75" data-unit="adet">
-                            <i class="fas fa-cart-plus"></i> Sepete Ekle
-                        </button>
+                    <div class="product-info">
+                        <h3 class="product-title">Ejder Meyvesi</h3>
+                        <div class="product-price">₺75 / adet</div>
+                        <p class="product-description">Hafif tatlı ve ferahlatıcı bir tada sahiptir. Kivi ve armut karışımı bir lezzeti vardır.</p>
+                        
+                        <div class="product-features">
+                            <div class="feature"><i class="fas fa-check-circle"></i> Antioksidan Zengini</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Bağırsak Dostu</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Demir Kaynağı</div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="action-btn info-btn" data-fruit="Ejder Meyvesi" data-type="taste">
+                                <i class="fas fa-info-circle"></i> Detay
+                            </button>
+                            <button class="action-btn buy-btn add-to-basket" data-fruit="Ejder Meyvesi" data-price="75" data-unit="adet">
+                                <i class="fas fa-cart-plus"></i> Sepete Ekle
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Mango -->
-            <div class="product mango" data-category="meyve tropikal" data-name="mango">
-                <div class="product-image">
-                    <div class="product-icon"></div>
-                    <div class="champion-badge">Lezzet Şampiyonu</div>
-                </div>
-                <div class="product-content">
-                    <h3>Mango</h3>
-                    <div class="product-price">₺120 / kg</div>
-                    <p class="product-description">Tropikal mango tatlı, sulu ve aromatik bir tada sahiptir. Tropikallerin kralı olarak bilinir.</p>
-                    <div class="product-features">
-                        <div class="feature"><i class="fas fa-star"></i> A Vitamini Deposu</div>
-                        <div class="feature"><i class="fas fa-star"></i> Cilt Sağlığı</div>
-                        <div class="feature"><i class="fas fa-star"></i> Sindirim Dostu</div>
+                
+                <!-- Mango -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./images/mango.svg" alt="Mango" class="product-icon">
                     </div>
-                    <div class="product-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Mango" data-type="taste">
-                            <i class="fas fa-utensils"></i> Tadı
-                        </button>
-                        <button class="info-btn health-btn" data-fruit="Mango" data-type="health">
-                            <i class="fas fa-heart"></i> Sağlık
-                        </button>
-                        <button class="info-btn buy-btn add-to-basket" data-fruit="Mango" data-price="120">
-                            <i class="fas fa-cart-plus"></i> Sepete Ekle
-                        </button>
+                    <div class="product-info">
+                        <h3 class="product-title">Mango</h3>
+                        <div class="product-price">₺120 / kg</div>
+                        <p class="product-description">Tropikal mango tatlı, sulu ve aromatik bir tada sahiptir. Tropikallerin kralı olarak bilinir.</p>
+                        
+                        <div class="product-features">
+                            <div class="feature"><i class="fas fa-check-circle"></i> A Vitamini Deposu</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Cilt Sağlığı</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Sindirim Dostu</div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="action-btn info-btn" data-fruit="Mango" data-type="taste">
+                                <i class="fas fa-info-circle"></i> Detay
+                            </button>
+                            <button class="action-btn buy-btn add-to-basket" data-fruit="Mango" data-price="120" data-unit="kg">
+                                <i class="fas fa-cart-plus"></i> Sepete Ekle
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="whatsapp-contact">
-            <h3>Kolay Sipariş İçin</h3>
-            <p>WhatsApp'tan doğrudan sipariş vermek için aşağıdaki butona tıklayın</p>
-            <a href="https://wa.me/905074340200?text=Merhaba,%20tropikal%20meyve%20siparişi%20vermek%20istiyorum." class="whatsapp-btn" target="_blank">
-                <i class="fab fa-whatsapp"></i> WhatsApp'tan Sipariş Ver
-            </a>
-        </div>
-
-        <div class="contact-section">
-            <h2>İletişim ve Sipariş</h2>
-            <div class="order-info">
-                <p><strong>Sipariş süreci:</strong> Sipariş formunu doldurduğunuzda herhangi bir ödeme yapmazsınız. Sizinle iletişime geçerek siparişinizi onaylayacağız ve ödeme seçeneklerini sunacağız. Zorunlu bir satın alma yükümlülüğünüz bulunmamaktadır.</p>
-            </div>
-            <div class="contact-form-grid">
+            
+            <div class="contact-form">
+                <h2 class="section-title">Sipariş ve İletişim</h2>
+                
                 <div class="form-group">
-                    <label for="name">Adınız Soyadınız *</label>
-                    <input type="text" id="name" placeholder="Adınız ve soyadınız">
-                    <div class="error-message" id="name-error">Lütfen adınızı giriniz</div>
+                    <label for="name">Adınız Soyadınız</label>
+                    <input type="text" id="name" class="form-control" placeholder="Adınız ve soyadınız">
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">E-posta Adresiniz *</label>
-                    <input type="email" id="email" placeholder="E-posta adresiniz">
-                    <div class="error-message" id="email-error">Lütfen geçerli bir e-posta adresi giriniz</div>
+                    <label for="email">E-posta Adresiniz</label>
+                    <input type="email" id="email" class="form-control" placeholder="E-posta adresiniz">
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Telefon Numaranız *</label>
-                    <input type="tel" id="phone" placeholder="Telefon numaranız">
-                    <div class="error-message" id="phone-error">Lütfen telefon numaranızı giriniz</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="product">Ürün Seçin *</label>
-                    <select id="product">
-                        <option value="">Ürün Seçin</option>
-                        <option value="Lime">Lime</option>
-                        <option value="Avokado">Avokado</option>
-                        <option value="Ejder Meyvesi">Ejder Meyvesi</option>
-                        <option value="Mango">Mango</option>
-                    </select>
-                    <div class="error-message" id="product-error">Lütfen bir ürün seçiniz</div>
+                    <label for="phone">Telefon Numaranız</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="Telefon numaranız">
                 </div>
                 
                 <div class="form-group">
                     <label for="message">Mesajınız</label>
-                    <textarea id="message" placeholder="Mesajınız"></textarea>
+                    <textarea id="message" class="form-control" rows="4" placeholder="Mesajınız"></textarea>
                 </div>
                 
-                <button class="contact-submit" id="contact-submit">Gönder</button>
+                <button class="action-btn buy-btn" style="width: 100%">
+                    <i class="fas fa-paper-plane"></i> Gönder
+                </button>
             </div>
         </div>
     </div>
-
+    
     <!-- Sepet Modal -->
-    <div class="basket-modal" id="basketModal">
-        <div class="basket-content">
+    <div class="modal" id="basketModal">
+        <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h2>Alışveriş Sepetiniz</h2>
+            <h2 class="modal-title">Alışveriş Sepetiniz</h2>
+            
             <div class="basket-items" id="basketItems">
                 <div class="empty-basket">Sepetinizde ürün bulunmamaktadır.</div>
             </div>
+            
             <div class="basket-total" id="basketTotal">
                 Toplam: ₺0
             </div>
-            <button class="checkout-btn" id="checkoutBtn">Sipariş Ver</button>
             
-            <!-- Sipariş Formu -->
-            <div class="order-form" id="orderForm">
-                <h3>Sipariş Bilgileri</h3>
-                <div class="order-info">
-                    <p><strong>Not:</strong> Bu formu doldurduğunuzda herhangi bir ödeme yapmazsınız. Sizinle iletişime geçerek siparişinizi onaylayacağız ve ödeme seçeneklerini sunacağız.</p>
-                </div>
-                <div class="order-form-grid">
-                    <div class="form-group">
-                        <label for="orderName">Adınız Soyadınız *</label>
-                        <input type="text" id="orderName" placeholder="Adınız ve soyadınız">
-                    </div>
-                    <div class="form-group">
-                        <label for="orderEmail">E-posta Adresiniz *</label>
-                        <input type="email" id="orderEmail" placeholder="E-posta adresiniz">
-                    </div>
-                    <div class="form-group">
-                        <label for="orderPhone">Telefon Numaranız *</label>
-                        <input type="tel" id="orderPhone" placeholder="Telefon numaranız">
-                    </div>
-                    <div class="form-group">
-                        <label for="orderAddress">Adresiniz *</label>
-                        <input type="text" id="orderAddress" placeholder="Teslimat adresiniz">
-                    </div>
-                    <div class="form-group">
-                        <label for="orderLanguage">İletişim Dili *</label>
-                        <select id="orderLanguage">
-                            <option value="">Dil Seçin</option>
-                            <option value="Türkçe">Türkçe</option>
-                            <option value="English">English</option>
-                            <option value="Deutsch">Deutsch</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="orderNotes">Notlar</label>
-                        <textarea id="orderNotes" placeholder="Siparişinizle ilgili notlar..."></textarea>
-                    </div>
-                </div>
-                <button class="checkout-btn order-submit" id="orderSubmit">Siparişi Tamamla</button>
+            <div class="checkout-options">
+                <button class="checkout-btn email-btn" id="emailOrderBtn">
+                    <i class="fas fa-envelope"></i> E-posta ile Sipariş Ver
+                </button>
+                <button class="checkout-btn whatsapp-btn" id="whatsappOrderBtn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp ile Sipariş Ver
+                </button>
             </div>
         </div>
     </div>
-
-    <div class="modal" id="infoModal">
+    
+    <!-- Ürün Detay Modal -->
+    <div class="modal" id="productModal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h2 id="modalTitle">Bilgi</h2>
-            <div id="modalContent">
-                <p id="modalText">İçerik yükleniyor...</p>
+            <h2 class="modal-title" id="modalProductTitle">Ürün Detayı</h2>
+            <div id="modalProductContent">
+                <p>İçerik yükleniyor...</p>
             </div>
         </div>
     </div>
-
-    <div class="notification" id="notification">
-        Mesajınız gönderiliyor...
-    </div>
-
+    
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Tropiko</h3>
-                <p>Tropikal lezzetleri en taze haliyle sizlere ulaştırıyoruz.</p>
-                <div class="company-info">
-                    <p><strong>ÖZYÜREKOĞLU TARIM YAŞ SEB.MEYV.TİC.LTD.ŞTİ.</strong></p>
-                    <p>ŞEHİT MUSTAFA MAH. İSMETPAŞA BULV.</p>
-                    <p>BALTALI İŞHANI NO:10 Tarsus/ Mersin (İçel)</p>
-                    <p>Tel: 8508236336</p>
-                    <p>Vergi Dairesi: KIZILMURAT</p>
-                    <p>VKN: 7180695955</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tropiko</h3>
+                    <p>Tropikal lezzetleri en taze haliyle sizlere ulaştırıyoruz.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <p>WhatsApp: +90 507 434 0200</p>
+                    <p>E-posta: 3748372616@gmail.com</p>
+                    <p>Adres: Şehit Mustafa Mah. İsmetpaşa Bulv. Baltalı İşhanı No:10 Tarsus/Mersin</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Hızlı Erişim</h3>
+                    <div class="footer-links">
+                        <a href="#">Gizlilik Politikası</a>
+                        <a href="#">Kullanım Şartları</a>
+                        <a href="#">Sıkça Sorulan Sorular</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Bizi Takip Edin</h3>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/_yusufalp__" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
             
-            <div class="footer-section">
-                <h3>Hızlı Erişim</h3>
-                <div class="footer-links">
-                    <a href="/privacy">Gizlilik Politikası</a>
-                    <a href="/terms">Kullanım Şartları</a>
-                    <a href="/contact">İletişim</a>
-                    <a href="/legal">Yasal</a>
-                </div>
+            <div class="copyright">
+                &copy; 2025 ÖZYÜREKOĞLU TARIM YAŞ SEB.MEYV.TİC.LTD.ŞTİ. - Tüm Hakları Saklıdır.
             </div>
-            
-            <div class="footer-section">
-                <h3>Bizi Takip Edin</h3>
-                <div class="social-icons">
-                    <a href="https://www.instagram.com/_yusufalp__?utm_source=qr&igsh=MTd0ZTZwNTMwNHBxYg==" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-section">
-                <h3>İletişim</h3>
-                <p>WhatsApp: +90 507 434 0200</p>
-                <p>E-posta: 3748372616@gmail.com</p>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            &copy; 2025 ÖZYÜREKOĞLU TARIM YAŞ SEB.MEYV.TİC.LTD.ŞTİ. - Tüm Hakları Saklıdır.
         </div>
     </footer>
 
@@ -1554,54 +772,11 @@
         const basketModal = document.getElementById('basketModal');
         const basketItems = document.getElementById('basketItems');
         const basketTotal = document.getElementById('basketTotal');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const orderForm = document.getElementById('orderForm');
-        const orderSubmit = document.getElementById('orderSubmit');
-
-        // Arama ve filtreleme işlevselliği
-        const searchInput = document.getElementById('searchInput');
-        const searchBtn = document.getElementById('searchBtn');
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        const products = document.querySelectorAll('.product');
-
-        // Arama fonksiyonu
-        function searchProducts() {
-            const searchText = searchInput.value.toLowerCase();
-            
-            products.forEach(product => {
-                const productName = product.getAttribute('data-name').toLowerCase();
-                const productCategory = product.getAttribute('data-category');
-                const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
-                
-                const matchesSearch = productName.includes(searchText);
-                const matchesCategory = activeCategory === 'all' || productCategory.includes(activeCategory);
-                
-                if (matchesSearch && matchesCategory) {
-                    product.style.display = 'flex';
-                } else {
-                    product.style.display = 'none';
-                }
-            });
-        }
-
-        // Kategori filtreleme
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                searchProducts();
-            });
-        });
-
-        // Arama butonu
-        searchBtn.addEventListener('click', searchProducts);
-        
-        // Enter tuşu ile arama
-        searchInput.addEventListener('keyup', function(e) {
-            if (e.key === 'Enter') {
-                searchProducts();
-            }
-        });
+        const emailOrderBtn = document.getElementById('emailOrderBtn');
+        const whatsappOrderBtn = document.getElementById('whatsappOrderBtn');
+        const productModal = document.getElementById('productModal');
+        const modalProductTitle = document.getElementById('modalProductTitle');
+        const modalProductContent = document.getElementById('modalProductContent');
 
         // Sepet sayacını güncelle
         function updateBasketCount() {
@@ -1614,12 +789,13 @@
             if (basket.length === 0) {
                 basketItems.innerHTML = '<div class="empty-basket">Sepetinizde ürün bulunmamaktadır.</div>';
                 basketTotal.textContent = 'Toplam: ₺0';
-                checkoutBtn.style.display = 'none';
-                orderForm.style.display = 'none';
+                emailOrderBtn.style.display = 'none';
+                whatsappOrderBtn.style.display = 'none';
                 return;
             }
             
-            checkoutBtn.style.display = 'block';
+            emailOrderBtn.style.display = 'block';
+            whatsappOrderBtn.style.display = 'block';
             basketItems.innerHTML = '';
             let total = 0;
             
@@ -1631,7 +807,7 @@
                 basketItem.className = 'basket-item';
                 basketItem.innerHTML = `
                     <div class="basket-item-info">
-                        <div class="basket-item-icon" style="background-image: url('${fruitInfo[item.name].image}')"></div>
+                        <img src="${fruitInfo[item.name].image}" alt="${item.name}" class="basket-item-icon">
                         <div>
                             <div>${item.name}</div>
                             <div>₺${item.price} / ${item.unit}</div>
@@ -1708,87 +884,70 @@
             
             saveBasket();
             updateBasketCount();
-            showNotification(`${name} sepete eklendi!`);
+            alert(`${name} sepete eklendi!`);
         }
 
-        // Siparişi tamamla
-        function completeOrder() {
-            const name = document.getElementById('orderName').value;
-            const email = document.getElementById('orderEmail').value;
-            const phone = document.getElementById('orderPhone').value;
-            const address = document.getElementById('orderAddress').value;
-            const language = document.getElementById('orderLanguage').value;
-            const notes = document.getElementById('orderNotes').value;
-            
-            if (!name || !email || !phone || !address || !language) {
-                showNotification('Lütfen tüm zorunlu alanları doldurunuz', 'error');
+        // E-posta ile sipariş oluştur
+        function createEmailOrder() {
+            if (basket.length === 0) {
+                alert('Sepetinizde ürün bulunmamaktadır.');
                 return;
             }
             
             // Sepet içeriğini hazırla
-            const orderItems = basket.map(item => `${item.name} - ${item.quantity} ${item.unit} - ₺${item.price * item.quantity}`).join('\n');
+            const orderItems = basket.map(item => `${item.name} - ${item.quantity} ${item.unit} - ₺${item.price * item.quantity}`).join('%0D%0A');
             const total = basket.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
             // E-posta içeriği
-            const subject = `Yeni Sipariş - ${name}`;
-            const body = `İsim: ${name}
-E-posta: ${email}
-Telefon: ${phone}
-Adres: ${address}
-Tercih Edilen İletişim Dili: ${language}
-Ek Notlar: ${notes || 'Yok'}
-
-Sipariş Edilen Ürünler:
-${orderItems}
-
-Toplam Tutar: ₺${total}
-
-Bu sipariş Tropiko web sitesinden oluşturulmuştur.`;
+            const subject = 'Tropiko Siparişi';
+            const body = `Merhaba,%0D%0A%0D%0AAşağıdaki ürünleri sipariş vermek istiyorum:%0D%0A%0D%0A${orderItems}%0D%0A%0D%0AToplam Tutar: ₺${total}%0D%0A%0D%0AAdım: %0D%0ATelefonum: %0D%0AAdresim: %0D%0A%0D%0ATeşekkürler.`;
             
             // E-posta gönder
-            window.open(`mailto:3748372616@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+            window.open(`mailto:3748372616@gmail.com?subject=${subject}&body=${body}`);
+        }
+
+        // WhatsApp ile sipariş oluştur
+        function createWhatsAppOrder() {
+            if (basket.length === 0) {
+                alert('Sepetinizde ürün bulunmamaktadır.');
+                return;
+            }
             
-            // Bildirim göster
-            showNotification('Siparişiniz alındı! E-posta uygulamanız açılıyor...');
+            // Sepet içeriğini hazırla
+            const orderItems = basket.map(item => `${item.name} - ${item.quantity} ${item.unit} - ₺${item.price * item.quantity}`).join('%0A');
+            const total = basket.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
-            // Sepeti temizle
-            basket = [];
-            saveBasket();
-            updateBasketCount();
-            renderBasket();
+            // WhatsApp mesajı
+            const message = `Merhaba,%0A%0AAşağıdaki ürünleri sipariş vermek istiyorum:%0A%0A${orderItems}%0A%0AToplam Tutar: ₺${total}%0A%0AAdım: %0ATelefonum: %0AAdresim: %0A%0ATeşekkürler.`;
             
-            // Modal'ı kapat
-            basketModal.style.display = 'none';
-            orderForm.style.display = 'none';
+            // WhatsApp gönder
+            window.open(`https://wa.me/905074340200?text=${message}`);
+        }
+
+        // Ürün detayını göster
+        function showProductInfo(fruit, type) {
+            modalProductTitle.textContent = `${fruit} Hakkında`;
             
-            // Formu temizle
-            document.getElementById('orderName').value = '';
-            document.getElementById('orderEmail').value = '';
-            document.getElementById('orderPhone').value = '';
-            document.getElementById('orderAddress').value = '';
-            document.getElementById('orderLanguage').value = '';
-            document.getElementById('orderNotes').value = '';
+            if (type === 'taste') {
+                modalProductContent.innerHTML = `
+                    <h3>Tadı ve Özellikleri</h3>
+                    <p>${fruitInfo[fruit].taste}</p>
+                    <h3>Fiyat</h3>
+                    <p>₺${fruitInfo[fruit].price} / ${fruitInfo[fruit].unit}</p>
+                `;
+            } else {
+                modalProductContent.innerHTML = `
+                    <h3>Sağlık Faydaları</h3>
+                    <p>${fruitInfo[fruit].health}</p>
+                    <h3>Fiyat</h3>
+                    <p>₺${fruitInfo[fruit].price} / ${fruitInfo[fruit].unit}</p>
+                `;
+            }
+            
+            productModal.style.display = 'flex';
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Scroll animasyonu
-            function checkScroll() {
-                products.forEach(product => {
-                    const productTop = product.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (productTop < windowHeight * 0.85) {
-                        product.classList.add('visible');
-                    }
-                });
-            }
-            
-            // İlk kontrol
-            checkScroll();
-            
-            // Scroll event listener
-            window.addEventListener('scroll', checkScroll);
-            
             // Sepet işlevselliği
             updateBasketCount();
             
@@ -1808,127 +967,37 @@ Bu sipariş Tropiko web sitesinden oluşturulmuştur.`;
                 });
             });
             
-            // Ödeme butonu
-            checkoutBtn.addEventListener('click', function() {
-                orderForm.style.display = 'block';
-            });
-            
-            // Siparişi tamamla butonu
-            orderSubmit.addEventListener('click', completeOrder);
-            
-            // Modal işlemleri
-            const infoModal = document.getElementById('infoModal');
-            const closeModals = document.querySelectorAll('.close-modal');
-            
-            // Bilgi butonlarına tıklama
+            // Bilgi butonları
             document.querySelectorAll('.info-btn').forEach(button => {
-                if (!button.classList.contains('add-to-basket')) {
-                    button.addEventListener('click', function() {
-                        const fruit = this.getAttribute('data-fruit');
-                        const type = this.getAttribute('data-type');
-                        
-                        if (type) {
-                            // Bilgi modalını göster
-                            modalTitle.textContent = fruit + ' Hakkında';
-                            modalText.textContent = fruitInfo[fruit][type];
-                            infoModal.style.display = 'flex';
-                        }
-                    });
-                }
+                button.addEventListener('click', function() {
+                    const fruit = this.getAttribute('data-fruit');
+                    const type = this.getAttribute('data-type');
+                    showProductInfo(fruit, type);
+                });
             });
+            
+            // E-posta ile sipariş butonu
+            emailOrderBtn.addEventListener('click', createEmailOrder);
+            
+            // WhatsApp ile sipariş butonu
+            whatsappOrderBtn.addEventListener('click', createWhatsAppOrder);
             
             // Modal'ları kapatma
-            closeModals.forEach(closeBtn => {
+            document.querySelectorAll('.close-modal').forEach(closeBtn => {
                 closeBtn.addEventListener('click', function() {
-                    infoModal.style.display = 'none';
                     basketModal.style.display = 'none';
-                    orderForm.style.display = 'none';
+                    productModal.style.display = 'none';
                 });
             });
             
             // Dışarı tıklayınca modal'ları kapat
             window.addEventListener('click', function(event) {
-                if (event.target === infoModal || event.target === basketModal) {
-                    infoModal.style.display = 'none';
+                if (event.target === basketModal || event.target === productModal) {
                     basketModal.style.display = 'none';
-                    orderForm.style.display = 'none';
-                }
-            });
-            
-            // İletişim formu doğrulama
-            const contactForm = document.querySelector('.contact-form-grid');
-            const contactSubmit = document.getElementById('contact-submit');
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const phoneInput = document.getElementById('phone');
-            const productSelect = document.getElementById('product');
-            const nameError = document.getElementById('name-error');
-            const emailError = document.getElementById('email-error');
-            const phoneError = document.getElementById('phone-error');
-            const productError = document.getElementById('product-error');
-            
-            contactSubmit.addEventListener('click', function(e) {
-                e.preventDefault();
-                let isValid = true;
-                
-                // İsim doğrulama
-                if (nameInput.value.trim() === '') {
-                    nameError.style.display = 'block';
-                    isValid = false;
-                } else {
-                    nameError.style.display = 'none';
-                }
-                
-                // E-posta doğrulama
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailPattern.test(emailInput.value)) {
-                    emailError.style.display = 'block';
-                    isValid = false;
-                } else {
-                    emailError.style.display = 'none';
-                }
-                
-                // Telefon doğrulama
-                if (phoneInput.value.trim() === '') {
-                    phoneError.style.display = 'block';
-                    isValid = false;
-                } else {
-                    phoneError.style.display = 'none';
-                }
-                
-                // Ürün doğrulama
-                if (productSelect.value === '') {
-                    productError.style.display = 'block';
-                    isValid = false;
-                } else {
-                    productError.style.display = 'none';
-                }
-                
-                if (isValid) {
-                    showNotification('Mesajınız gönderildi! En kısa sürede sizinle iletişime geçeceğiz.');
-                    contactForm.reset();
-                } else {
-                    showNotification('Lütfen gerekli alanları doldurunuz', 'error');
+                    productModal.style.display = 'none';
                 }
             });
         });
-        
-        // Bildirim gösterme
-        function showNotification(text, type = 'success') {
-            const notification = document.getElementById('notification');
-            notification.textContent = text;
-            notification.style.display = 'block';
-            
-            if (type === 'error') {
-                notification.style.background = 'linear-gradient(to right, #ff4757, #ff6b6b)';
-            } else {
-                notification.style.background = 'linear-gradient(to right, #ff7e5f, #feb47b)';
-            }
-            
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
-        }
     </script>
 </body>
 </html>
