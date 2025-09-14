@@ -27,7 +27,7 @@
         }
         
         header {
-            background: linear-gradient(rgba(255, 165, 0, 0.8), rgba(255, 140, 0, 0.8)), url('./images/sunny.svg');
+            background: linear-gradient(rgba(30, 100, 50, 0.9), rgba(50, 150, 70, 0.9)), url('./images/sunny.svg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -79,6 +79,68 @@
             line-height: 1.6;
         }
         
+        .discover-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .discover-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2E8B57;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .search-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #2E8B57;
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.2);
+        }
+        
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background: #f1f1f1;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: #2E8B57;
+            color: white;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -90,7 +152,7 @@
             text-align: center;
             margin-bottom: 80px;
             padding: 50px;
-            background: linear-gradient(135deg, rgba(86, 171, 47, 0.9) 0%, rgba(168, 224, 99, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.9) 0%, rgba(144, 238, 144, 0.9) 100%);
             border-radius: 20px;
             color: white;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -234,7 +296,7 @@
         }
         
         .feature i {
-            color: #56ab2f;
+            color: #2E8B57;
         }
         
         .product-buttons {
@@ -267,7 +329,7 @@
         }
         
         .health-btn {
-            background: linear-gradient(to right, #56ab2f, #a8e063);
+            background: linear-gradient(to right, #2E8B57, #3CB371);
             color: white;
         }
         
@@ -277,11 +339,11 @@
         }
         
         /* Her meyve için farklı renkler */
-        .product.limon .product-image {
+        .product.lime .product-image {
             background: #f5f8e0;
         }
         
-        .product.limon .product-content h3::after {
+        .product.lime .product-content h3::after {
             background: #c4e538;
         }
         
@@ -309,11 +371,11 @@
             background: #b53471;
         }
         
-        .product.ananas .product-image {
+        .product.mango .product-image {
             background: #fff0d9;
         }
         
-        .product.ananas .product-content h3::after {
+        .product.mango .product-content h3::after {
             background: #ffc312;
         }
         
@@ -326,7 +388,7 @@
             z-index: 1;
         }
         
-        .product.limon .product-icon {
+        .product.lime .product-icon {
             background-image: url('./images/limon.svg');
         }
         
@@ -342,8 +404,8 @@
             background-image: url('./images/kivi.svg');
         }
         
-        .product.ananas .product-icon {
-            background-image: url('./images/ananas.svg');
+        .product.mango .product-icon {
+            background-image: url('./images/mango.svg');
         }
         
         /* Sepet stilleri */
@@ -474,7 +536,7 @@
         .checkout-btn {
             width: 100%;
             padding: 18px;
-            background: linear-gradient(to right, #56ab2f, #a8e063);
+            background: linear-gradient(to right, #2E8B57, #3CB371);
             color: white;
             border: none;
             border-radius: 50px;
@@ -486,7 +548,7 @@
         
         .checkout-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(86, 171, 47, 0.3);
+            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.3);
         }
         
         .empty-basket {
@@ -619,12 +681,12 @@
         
         .contact-form textarea:focus {
             outline: none;
-            border-color: #56ab2f;
+            border-color: #2E8B57;
         }
         
         .send-btn {
             padding: 15px 30px;
-            background: linear-gradient(to right, #56ab2f, #a8e063);
+            background: linear-gradient(to right, #2E8B57, #3CB371);
             color: white;
             border: none;
             border-radius: 50px;
@@ -640,7 +702,7 @@
         
         .send-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(86, 171, 47, 0.3);
+            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.3);
         }
         
         .contact-section {
@@ -678,7 +740,7 @@
             left: -80px;
             width: 250px;
             height: 250px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%2356ab2f" opacity="0.1" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%232E8B57" opacity="0.1" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
             background-size: contain;
             background-repeat: no-repeat;
             z-index: 0;
@@ -687,7 +749,7 @@
         .contact-section h2 {
             text-align: center;
             margin-bottom: 30px;
-            color: #56ab2f;
+            color: #2E8B57;
             font-size: 2.5rem;
             font-weight: 700;
             position: relative;
@@ -707,7 +769,7 @@
         
         .contact-form-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 25px;
             position: relative;
             z-index: 1;
@@ -740,17 +802,15 @@
         .contact-form-grid textarea:focus,
         .contact-form-grid select:focus {
             outline: none;
-            border-color: #56ab2f;
-            box-shadow: 0 5px 15px rgba(86, 171, 47, 0.1);
+            border-color: #2E8B57;
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.1);
         }
         
         .contact-form-grid textarea {
-            grid-column: span 2;
             min-height: 150px;
         }
         
         .contact-submit {
-            grid-column: span 2;
             padding: 18px 35px;
             background: linear-gradient(to right, #FF5E7D, #FF8A8C);
             color: white;
@@ -776,6 +836,16 @@
             font-size: 0.9rem;
             margin-top: 5px;
             display: none;
+        }
+        
+        .order-info {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border-left: 4px solid #2E8B57;
         }
         
         footer {
@@ -804,7 +874,7 @@
         .footer-section h3 {
             font-size: 1.4rem;
             margin-bottom: 20px;
-            color: #a8e063;
+            color: #3CB371;
             font-weight: 600;
             position: relative;
             padding-bottom: 10px;
@@ -835,12 +905,12 @@
             content: '➜';
             position: absolute;
             left: 0;
-            color: #a8e063;
+            color: #3CB371;
             transition: transform 0.3s ease;
         }
         
         .footer-links a:hover {
-            color: #a8e063;
+            color: #3CB371;
             transform: translateX(5px);
         }
         
@@ -857,7 +927,7 @@
         }
         
         .social-icons a:hover {
-            color: #a8e063;
+            color: #3CB371;
             transform: translateY(-5px);
         }
         
@@ -882,6 +952,43 @@
             display: none;
             z-index: 1001;
             animation: notificationSlideIn 0.5s forwards;
+        }
+        
+        .whatsapp-contact {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .whatsapp-contact h3 {
+            margin-bottom: 20px;
+            color: #2E8B57;
+        }
+        
+        .whatsapp-contact p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: linear-gradient(to right, #25D366, #1EBEA5);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
         }
         
         @keyframes notificationSlideIn {
@@ -1019,7 +1126,7 @@
             position: absolute;
             width: 100px;
             height: 100px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23a8e063" opacity="0.3" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%233CB371" opacity="0.3" d="M50,0 C77.614,0 100,22.386 100,50 C100,77.614 77.614,100 50,100 C22.386,100 0,77.614 0,50 C0,22.386 22.386,0 50,0 Z"></path></svg>');
             background-size: contain;
             background-repeat: no-repeat;
             opacity: 0.3;
@@ -1068,16 +1175,12 @@
         
         .order-form-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 20px;
         }
         
-        .order-form textarea {
-            grid-column: span 2;
-        }
-        
         .order-submit {
-            grid-column: span 2;
+            width: 100%;
         }
     </style>
 </head>
@@ -1104,6 +1207,22 @@
         </div>
     </header>
 
+    <div class="discover-section">
+        <h2>Keşfet</h2>
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Meyve veya sebze adı ara...">
+            <button class="info-btn taste-btn" id="searchBtn">
+                <i class="fas fa-search"></i> Ara
+            </button>
+        </div>
+        <div class="category-filters">
+            <button class="category-btn active" data-category="all">Tümü</button>
+            <button class="category-btn" data-category="meyve">Meyveler</button>
+            <button class="category-btn" data-category="sebze">Sebzeler</button>
+            <button class="category-btn" data-category="tropikal">Tropikaller</button>
+        </div>
+    </div>
+
     <div class="container">
         <div class="intro">
             <h2>Tropikal Cennetten Lezzetler</h2>
@@ -1111,29 +1230,29 @@
         </div>
 
         <div class="products-showcase">
-            <!-- Limon -->
-            <div class="product limon">
+            <!-- Lime -->
+            <div class="product lime" data-category="meyve tropikal" data-name="lime">
                 <div class="product-image">
                     <div class="product-icon"></div>
                     <div class="champion-badge">C Vitamini Şampiyonu</div>
                 </div>
                 <div class="product-content">
-                    <h3>Limon</h3>
-                    <div class="product-price">₺45 / kg</div>
-                    <p class="product-description">Tropikal limonlar, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcı bir etkisi vardır.</p>
+                    <h3>Lime</h3>
+                    <div class="product-price">₺180 / kg</div>
+                    <p class="product-description">Tropikal limeler, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcı bir etkisi vardır.</p>
                     <div class="product-features">
                         <div class="feature"><i class="fas fa-star"></i> C Vitamini Deposu</div>
                         <div class="feature"><i class="fas fa-star"></i> Bağışıklık Güçlendirici</div>
                         <div class="feature"><i class="fas fa-star"></i> Antioksidan Kaynağı</div>
                     </div>
                     <div class="product-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Limon" data-type="taste">
+                        <button class="info-btn taste-btn" data-fruit="Lime" data-type="taste">
                             <i class="fas fa-utensils"></i> Tadı
                         </button>
-                        <button class="info-btn health-btn" data-fruit="Limon" data-type="health">
+                        <button class="info-btn health-btn" data-fruit="Lime" data-type="health">
                             <i class="fas fa-heart"></i> Sağlık
                         </button>
-                        <button class="info-btn buy-btn add-to-basket" data-fruit="Limon" data-price="45">
+                        <button class="info-btn buy-btn add-to-basket" data-fruit="Lime" data-price="180">
                             <i class="fas fa-cart-plus"></i> Sepete Ekle
                         </button>
                     </div>
@@ -1141,14 +1260,14 @@
             </div>
 
             <!-- Avokado -->
-            <div class="product avakado">
+            <div class="product avakado" data-category="meyve tropikal" data-name="avokado">
                 <div class="product-image">
                     <div class="product-icon"></div>
                     <div class="champion-badge">Sağlıklı Yağ Şampiyonu</div>
                 </div>
                 <div class="product-content">
                     <h3>Avokado</h3>
-                    <div class="product-price">₺75 / kg</div>
+                    <div class="product-price">₺65 / adet</div>
                     <p class="product-description">Kremamsı, zengin ve hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır.</p>
                     <div class="product-features">
                         <div class="feature"><i class="fas fa-star"></i> Sağlıklı Yağ Kaynağı</div>
@@ -1162,7 +1281,7 @@
                         <button class="info-btn health-btn" data-fruit="Avokado" data-type="health">
                             <i class="fas fa-heart"></i> Sağlık
                         </button>
-                        <button class="info-btn buy-btn add-to-basket" data-fruit="Avokado" data-price="75">
+                        <button class="info-btn buy-btn add-to-basket" data-fruit="Avokado" data-price="65" data-unit="adet">
                             <i class="fas fa-cart-plus"></i> Sepete Ekle
                         </button>
                     </div>
@@ -1170,14 +1289,14 @@
             </div>
 
             <!-- Ejder Meyvesi -->
-            <div class="product ejdermeyvesi">
+            <div class="product ejdermeyvesi" data-category="meyve tropikal" data-name="ejder meyvesi">
                 <div class="product-image">
                     <div class="product-icon"></div>
                     <div class="champion-badge">Antioksidan Şampiyonu</div>
                 </div>
                 <div class="product-content">
                     <h3>Ejder Meyvesi</h3>
-                    <div class="product-price">₺95 / kg</div>
+                    <div class="product-price">₺75 / adet</div>
                     <p class="product-description">Hafif tatlı ve ferahlatıcı bir tada sahiptir. Kivi ve armut karışımı bir lezzeti vardır.</p>
                     <div class="product-features">
                         <div class="feature"><i class="fas fa-star"></i> Antioksidan Zengini</div>
@@ -1191,65 +1310,36 @@
                         <button class="info-btn health-btn" data-fruit="Ejder Meyvesi" data-type="health">
                             <i class="fas fa-heart"></i> Sağlık
                         </button>
-                        <button class="info-btn buy-btn add-to-basket" data-fruit="Ejder Meyvesi" data-price="95">
+                        <button class="info-btn buy-btn add-to-basket" data-fruit="Ejder Meyvesi" data-price="75" data-unit="adet">
                             <i class="fas fa-cart-plus"></i> Sepete Ekle
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Kivi -->
-            <div class="product kivi">
+            <!-- Mango -->
+            <div class="product mango" data-category="meyve tropikal" data-name="mango">
                 <div class="product-image">
                     <div class="product-icon"></div>
-                    <div class="champion-badge">Sindirim Şampiyonu</div>
+                    <div class="champion-badge">Lezzet Şampiyonu</div>
                 </div>
                 <div class="product-content">
-                    <h3>Kivi</h3>
-                    <div class="product-price">₺55 / kg</div>
-                    <p class="product-description">Tropikal kivi tatlı ve hafif ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcıdır.</p>
+                    <h3>Mango</h3>
+                    <div class="product-price">₺120 / kg</div>
+                    <p class="product-description">Tropikal mango tatlı, sulu ve aromatik bir tada sahiptir. Tropikallerin kralı olarak bilinir.</p>
                     <div class="product-features">
-                        <div class="feature"><i class="fas fa-star"></i> C Vitamini Deposu</div>
+                        <div class="feature"><i class="fas fa-star"></i> A Vitamini Deposu</div>
+                        <div class="feature"><i class="fas fa-star"></i> Cilt Sağlığı</div>
                         <div class="feature"><i class="fas fa-star"></i> Sindirim Dostu</div>
-                        <div class="feature"><i class="fas fa-star"></i> Uyku Kalitesi Artırıcı</div>
                     </div>
                     <div class="product-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Kivi" data-type="taste">
+                        <button class="info-btn taste-btn" data-fruit="Mango" data-type="taste">
                             <i class="fas fa-utensils"></i> Tadı
                         </button>
-                        <button class="info-btn health-btn" data-fruit="Kivi" data-type="health">
+                        <button class="info-btn health-btn" data-fruit="Mango" data-type="health">
                             <i class="fas fa-heart"></i> Sağlık
                         </button>
-                        <button class="info-btn buy-btn add-to-basket" data-fruit="Kivi" data-price="55">
-                            <i class="fas fa-cart-plus"></i> Sepete Ekle
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ananas -->
-            <div class="product ananas">
-                <div class="product-image">
-                    <div class="product-icon"></div>
-                    <div class="champion-badge">Enzym Şampiyonu</div>
-                </div>
-                <div class="product-content">
-                    <h3>Ananas</h3>
-                    <div class="product-price">₺65 / kg</div>
-                    <p class="product-description">Tatlı, sulu ve hafif asidik bir tada sahiptir. Tropikal bir lezzet şöleni sunar.</p>
-                    <div class="product-features">
-                        <div class="feature"><i class="fas fa-star"></i> Bromelain Enzymi</div>
-                        <div class="feature"><i class="fas fa-star"></i> Sindirim Destekleyici</div>
-                        <div class="feature"><i class="fas fa-star"></i> Anti-inflamatuar</div>
-                    </div>
-                    <div class="product-buttons">
-                        <button class="info-btn taste-btn" data-fruit="Ananas" data-type="taste">
-                            <i class="fas fa-utensils"></i> Tadı
-                        </button>
-                        <button class="info-btn health-btn" data-fruit="Ananas" data-type="health">
-                            <i class="fas fa-heart"></i> Sağlık
-                        </button>
-                        <button class="info-btn buy-btn add-to-basket" data-fruit="Ananas" data-price="65">
+                        <button class="info-btn buy-btn add-to-basket" data-fruit="Mango" data-price="120">
                             <i class="fas fa-cart-plus"></i> Sepete Ekle
                         </button>
                     </div>
@@ -1257,11 +1347,22 @@
             </div>
         </div>
 
+        <div class="whatsapp-contact">
+            <h3>Kolay Sipariş İçin</h3>
+            <p>WhatsApp'tan doğrudan sipariş vermek için aşağıdaki butona tıklayın</p>
+            <a href="https://wa.me/905074340200?text=Merhaba,%20tropikal%20meyve%20siparişi%20vermek%20istiyorum." class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp'tan Sipariş Ver
+            </a>
+        </div>
+
         <div class="contact-section">
             <h2>İletişim ve Sipariş</h2>
+            <div class="order-info">
+                <p><strong>Sipariş süreci:</strong> Sipariş formunu doldurduğunuzda herhangi bir ödeme yapmazsınız. Sizinle iletişime geçerek siparişinizi onaylayacağız ve ödeme seçeneklerini sunacağız. Zorunlu bir satın alma yükümlülüğünüz bulunmamaktadır.</p>
+            </div>
             <div class="contact-form-grid">
                 <div class="form-group">
-                    <label for="name">Adınız *</label>
+                    <label for="name">Adınız Soyadınız *</label>
                     <input type="text" id="name" placeholder="Adınız ve soyadınız">
                     <div class="error-message" id="name-error">Lütfen adınızı giriniz</div>
                 </div>
@@ -1273,24 +1374,24 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Telefon Numaranız</label>
+                    <label for="phone">Telefon Numaranız *</label>
                     <input type="tel" id="phone" placeholder="Telefon numaranız">
+                    <div class="error-message" id="phone-error">Lütfen telefon numaranızı giriniz</div>
                 </div>
                 
                 <div class="form-group">
                     <label for="product">Ürün Seçin *</label>
                     <select id="product">
                         <option value="">Ürün Seçin</option>
-                        <option value="Limon">Limon</option>
+                        <option value="Lime">Lime</option>
                         <option value="Avokado">Avokado</option>
                         <option value="Ejder Meyvesi">Ejder Meyvesi</option>
-                        <option value="Kivi">Kivi</option>
-                        <option value="Ananas">Ananas</option>
+                        <option value="Mango">Mango</option>
                     </select>
                     <div class="error-message" id="product-error">Lütfen bir ürün seçiniz</div>
                 </div>
                 
-                <div class="form-group" style="grid-column: span 2;">
+                <div class="form-group">
                     <label for="message">Mesajınız</label>
                     <textarea id="message" placeholder="Mesajınız"></textarea>
                 </div>
@@ -1316,6 +1417,9 @@
             <!-- Sipariş Formu -->
             <div class="order-form" id="orderForm">
                 <h3>Sipariş Bilgileri</h3>
+                <div class="order-info">
+                    <p><strong>Not:</strong> Bu formu doldurduğunuzda herhangi bir ödeme yapmazsınız. Sizinle iletişime geçerek siparişinizi onaylayacağız ve ödeme seçeneklerini sunacağız.</p>
+                </div>
                 <div class="order-form-grid">
                     <div class="form-group">
                         <label for="orderName">Adınız Soyadınız *</label>
@@ -1394,15 +1498,13 @@
             <div class="footer-section">
                 <h3>Bizi Takip Edin</h3>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/_yusufalp__?utm_source=qr&igsh=MTd0ZTZwNTMwNHBxYg==" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             
             <div class="footer-section">
                 <h3>İletişim</h3>
-                <p>WhatsApp: +90 374 837 2626</p>
+                <p>WhatsApp: +90 507 434 0200</p>
                 <p>E-posta: 3748372616@gmail.com</p>
             </div>
         </div>
@@ -1415,35 +1517,33 @@
     <script>
         // Meyve bilgileri
         const fruitInfo = {
-            Limon: {
-                taste: "Tropikal limonlar, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcı bir etkisi vardır. Yemeklerde, içeceklerde ve tatlılarda kullanılabilir.",
-                health: "C vitamini deposu olan limon, bağışıklık sistemini güçlendirir, sindirime yardımcı olur ve cilt sağlığını korur. Ayrıca antioksidan özelliği vardır ve vücuttaki toksinlerin atılmasına yardımcı olur.",
-                price: 45,
-                image: "./images/limon.svg"
+            Lime: {
+                taste: "Tropikal limeler, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcı bir etkisi vardır. Yemeklerde, içeceklerde ve tatlılarda kullanılabilir.",
+                health: "C vitamini deposu olan lime, bağışıklık sistemini güçlendirir, sindirime yardımcı olur ve cilt sağlığını korur. Ayrıca antioksidan özelliği vardır ve vücuttaki toksinlerin atılmasına yardımcı olur.",
+                price: 180,
+                image: "./images/limon.svg",
+                unit: "kg"
             },
             Avokado: {
                 taste: "Kremamsı, zengin ve hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır. Salatalarda, tostlarda ve mezelerde kullanılabilir.",
                 health: "Sağlıklı tekli doymamış yağlar içerir, kalp sağlığını destekler, lif açısından zengindir ve potasyum içeriği yüksektir. Ayrıca göz sağlığına faydalıdır ve kilo kontrolüne yardımcı olur.",
-                price: 75,
-                image: "./images/avakado.svg"
+                price: 65,
+                image: "./images/avakado.svg",
+                unit: "adet"
             },
             "Ejder Meyvesi": {
                 taste: "Hafif tatlı ve ferahlatıcı bir tada sahiptir. Kivi ve armut karışımı bir lezzeti vardır. Taze olarak tüketilebileceği gibi smoothie'lerde ve salatalarda da kullanılabilir.",
                 health: "Antioksidanlar, vitaminler ve minerallerle doludur. Bağırsak sağlığını destekler, demir içeriği yüksektir ve bağışıklık sistemini güçlendirir. Ayrıca cilt sağlığına da faydalıdır.",
-                price: 95,
-                image: "./images/ejdermeyvesi.svg"
+                price: 75,
+                image: "./images/ejdermeyvesi.svg",
+                unit: "adet"
             },
-            Kivi: {
-                taste: "Tropikal kivi tatlı ve hafif ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcıdır. Taze olarak tüketilebileceği gibi meyve salatalarında ve tatlılarda da kullanılabilir.",
-                health: "C vitamini deposudur, sindirime yardımcı olur, uyku kalitesini artırır ve cilt sağlığını korur. Ayrıca astım symptomlarını hafifletmeye yardımcı olabilir ve kan şekeri kontrolüne katkıda bulunur.",
-                price: 55,
-                image: "./images/kivi.svg"
-            },
-            Ananas: {
-                taste: "Tatlı, sulu ve hafif asidik bir tada sahiptir. Tropikal bir lezzet şöleni sunar. Taze olarak tüketilebileceği gibi yemeklerde, tatlılarda ve içeceklerde de kullanılabilir.",
-                health: "Bromelain enzimi sayesinde sindirime yardımcı olur, anti-inflamatuar özellikleri vardır ve C vitamini deposudur. Ayrıca bağışıklık sistemini güçlendirir ve kemik sağlığını destekler.",
-                price: 65,
-                image: "./images/ananas.svg"
+            Mango: {
+                taste: "Tropikal mango tatlı, sulu ve aromatik bir tada sahiptir. Tropikallerin kralı olarak bilinir. Taze olarak tüketilebileceği gibi meyve salatalarında, smoothie'lerde ve tatlılarda da kullanılabilir.",
+                health: "A vitamini deposudur, göz sağlığını destekler, cilt sağlığını korur ve bağışıklık sistemini güçlendirir. Ayrıca sindirime yardımcı olur ve antioksidan özellikleri vardır.",
+                price: 120,
+                image: "./images/mango.svg",
+                unit: "kg"
             }
         };
 
@@ -1457,6 +1557,51 @@
         const checkoutBtn = document.getElementById('checkoutBtn');
         const orderForm = document.getElementById('orderForm');
         const orderSubmit = document.getElementById('orderSubmit');
+
+        // Arama ve filtreleme işlevselliği
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const products = document.querySelectorAll('.product');
+
+        // Arama fonksiyonu
+        function searchProducts() {
+            const searchText = searchInput.value.toLowerCase();
+            
+            products.forEach(product => {
+                const productName = product.getAttribute('data-name').toLowerCase();
+                const productCategory = product.getAttribute('data-category');
+                const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
+                
+                const matchesSearch = productName.includes(searchText);
+                const matchesCategory = activeCategory === 'all' || productCategory.includes(activeCategory);
+                
+                if (matchesSearch && matchesCategory) {
+                    product.style.display = 'flex';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Kategori filtreleme
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                searchProducts();
+            });
+        });
+
+        // Arama butonu
+        searchBtn.addEventListener('click', searchProducts);
+        
+        // Enter tuşu ile arama
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                searchProducts();
+            }
+        });
 
         // Sepet sayacını güncelle
         function updateBasketCount() {
@@ -1489,12 +1634,12 @@
                         <div class="basket-item-icon" style="background-image: url('${fruitInfo[item.name].image}')"></div>
                         <div>
                             <div>${item.name}</div>
-                            <div>₺${item.price} / kg</div>
+                            <div>₺${item.price} / ${item.unit}</div>
                         </div>
                     </div>
                     <div class="basket-item-controls">
                         <button class="quantity-btn decrease-btn" data-index="${index}">-</button>
-                        <span>${item.quantity} kg</span>
+                        <span>${item.quantity} ${item.unit}</span>
                         <button class="quantity-btn increase-btn" data-index="${index}">+</button>
                         <button class="quantity-btn remove-btn" data-index="${index}"><i class="fas fa-trash"></i></button>
                     </div>
@@ -1547,7 +1692,7 @@
         }
 
         // Sepete ürün ekle
-        function addToBasket(name, price) {
+        function addToBasket(name, price, unit = "kg") {
             const existingItem = basket.find(item => item.name === name);
             
             if (existingItem) {
@@ -1556,7 +1701,8 @@
                 basket.push({
                     name: name,
                     price: price,
-                    quantity: 1
+                    quantity: 1,
+                    unit: unit
                 });
             }
             
@@ -1580,7 +1726,7 @@
             }
             
             // Sepet içeriğini hazırla
-            const orderItems = basket.map(item => `${item.name} - ${item.quantity} kg - ₺${item.price * item.quantity}`).join('\n');
+            const orderItems = basket.map(item => `${item.name} - ${item.quantity} ${item.unit} - ₺${item.price * item.quantity}`).join('\n');
             const total = basket.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
             // E-posta içeriği
@@ -1625,8 +1771,6 @@ Bu sipariş Tropiko web sitesinden oluşturulmuştur.`;
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            const products = document.querySelectorAll('.product');
-            
             // Scroll animasyonu
             function checkScroll() {
                 products.forEach(product => {
@@ -1659,7 +1803,8 @@ Bu sipariş Tropiko web sitesinden oluşturulmuştur.`;
                 button.addEventListener('click', function() {
                     const fruit = this.getAttribute('data-fruit');
                     const price = parseFloat(this.getAttribute('data-price'));
-                    addToBasket(fruit, price);
+                    const unit = this.getAttribute('data-unit') || "kg";
+                    addToBasket(fruit, price, unit);
                 });
             });
             
@@ -1715,9 +1860,11 @@ Bu sipariş Tropiko web sitesinden oluşturulmuştur.`;
             const contactSubmit = document.getElementById('contact-submit');
             const nameInput = document.getElementById('name');
             const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
             const productSelect = document.getElementById('product');
             const nameError = document.getElementById('name-error');
             const emailError = document.getElementById('email-error');
+            const phoneError = document.getElementById('phone-error');
             const productError = document.getElementById('product-error');
             
             contactSubmit.addEventListener('click', function(e) {
@@ -1739,6 +1886,14 @@ Bu sipariş Tropiko web sitesinden oluşturulmuştur.`;
                     isValid = false;
                 } else {
                     emailError.style.display = 'none';
+                }
+                
+                // Telefon doğrulama
+                if (phoneInput.value.trim() === '') {
+                    phoneError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    phoneError.style.display = 'none';
                 }
                 
                 // Ürün doğrulama
