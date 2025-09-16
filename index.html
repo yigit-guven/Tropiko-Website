@@ -55,19 +55,22 @@
         .logo {
             max-width: 300px;
             height: auto;
-            filter: drop-shadow(0 0 15px rgba(255, 140, 66, 0.8));
-            animation: pulse 2s infinite, rotate 20s linear infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.8));
+            animation: colorChange 8s infinite alternate, pulse 2s infinite;
+        }
+        
+        @keyframes colorChange {
+            0% { filter: drop-shadow(0 0 15px rgba(255, 230, 0, 0.8)) brightness(1.1); }
+            25% { filter: drop-shadow(0 0 15px rgba(255, 200, 50, 0.8)) brightness(1.15); }
+            50% { filter: drop-shadow(0 0 15px rgba(255, 165, 0, 0.8)) brightness(1.2); }
+            75% { filter: drop-shadow(0 0 15px rgba(255, 200, 50, 0.8)) brightness(1.15); }
+            100% { filter: drop-shadow(0 0 15px rgba(255, 230, 0, 0.8)) brightness(1.1); }
         }
         
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
         
         .tagline {
@@ -698,13 +701,13 @@
                     <div class="product-info">
                         <h3 class="product-title">Lime</h3>
                         <div class="product-price">₺180 / kg</div>
-                        <p class="product-description">Tropikal limeler, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Mükemmel bir yemek ve içecek eşlikçisidir.</p>
+                        <p class="product-description">Türkiye'de Akdeniz bölgesinde yetiştirilen lime, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir.</p>
                         
                         <div class="product-features">
-                            <div class="feature"><i class="fas fa-check-circle"></i> C Vitamini Deposu</div>
-                            <div class="feature"><i class="fas fa-check-circle"></i> Bağışıklık Güçlendirici</div>
-                            <div class="feature"><i class="fas fa-check-circle"></i> Antioksidan Kaynağı</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> C Vitamini Kaynağı</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Yemek ve İçeceklerde Kullanım</div>
                             <div class="feature"><i class="fas fa-check-circle"></i> Taze Hasat</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Yerli Üretim</div>
                         </div>
                         
                         <div class="product-actions">
@@ -726,13 +729,13 @@
                     <div class="product-info">
                         <h3 class="product-title">Avokado</h3>
                         <div class="product-price">₺65 / adet</div>
-                        <p class="product-description">Kremamsı, zengin ve hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır.</p>
+                        <p class="product-description">Türkiye'de Akdeniz ve Ege bölgelerinde yetiştirilen avokado, kremamsı ve hafif bir tada sahiptir.</p>
                         
                         <div class="product-features">
                             <div class="feature"><i class="fas fa-check-circle"></i> Sağlıklı Yağ Kaynağı</div>
-                            <div class="feature"><i class="fas fa-check-circle"></i> Kalp Dostu</div>
-                            <div class="feature"><i class="fas fa-check-circle"></i> Vitamin Deposu</div>
-                            <div class="feature"><i class="fas fa-check-circle"></i> Organik Yetiştirilmiş</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Salata ve Mezelerde Kullanım</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Vitamin İçeriği</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Yerli Üretim</div>
                         </div>
                         
                         <div class="product-actions">
@@ -754,13 +757,13 @@
                     <div class="product-info">
                         <h3 class="product-title">Ejder Meyvesi</h3>
                         <div class="product-price">₺75 / adet</div>
-                        <p class="product-description">Hafif tatlı ve ferahlatıcı bir tada sahiptir. Kivi ve armut karışımı bir lezzeti vardır.</p>
+                        <p class="product-description">Türkiye'de Akdeniz bölgesinde özel seralarda yetiştirilen ejder meyvesi, hafif tatlı ve ferahlatıcı bir tada sahiptir.</p>
                         
                         <div class="product-features">
-                            <div class="feature"><i class="fas fa-check-circle"></i> Antioksidan Zengini</div>
-                            <div class="feature"><i class="fas fa-check-circle"></i> Bağırsak Dostu</div>
-                            <div class="feature"><i class="fas fa-check-circle"></i> Demir Kaynağı</div>
-                            <div class="feature"><i class="fas fa-check-circle"></i> Doğal Tatlandırıcı</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Antioksidan İçerir</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Taze Tüketim</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Mineral Kaynağı</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Yerli Üretim</div>
                         </div>
                         
                         <div class="product-actions">
@@ -782,13 +785,13 @@
                     <div class="product-info">
                         <h3 class="product-title">Mango</h3>
                         <div class="product-price">₺120 / kg</div>
-                        <p class="product-description">Tropikal mango tatlı, sulu ve aromatik bir tada sahiptir. Tropikallerin kralı olarak bilinir.</p>
+                        <p class="product-description">Türkiye'de Akdeniz bölgesinde özel koşullarda yetiştirilen mango, tatlı ve aromatik bir tada sahiptir.</p>
                         
                         <div class="product-features">
-                            <div class="feature"><i class="fas fa-check-circle"></i> A Vitamini Deposu</div>
-                            <div class="feature"><i class="fas fa-check-circle"></i> Cilt Sağlığı</div>
-                            <div class="feature"><i class="fas fa-check-circle"></i> Sindirim Dostu</div>
-                            <div class="feature"><i class="fas fa-check-circle"></i> Yüksek Kalite</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> A Vitamini Kaynağı</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Taze Tüketim</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Lif İçeriği</div>
+                            <div class="feature"><i class="fas fa-check-circle"></i> Yerli Üretim</div>
                         </div>
                         
                         <div class="product-actions">
@@ -808,7 +811,8 @@
                 <h2 class="section-title">Hakkımızda</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Tropiko olarak, 2010 yılından beri en taze ve kaliteli tropikal meyve ve sebzeleri Türkiye'ye getirmenin gururunu yaşıyoruz. Mersin'deki merkez ofisimizde, uzman ekibimizle birlikte ürünlerimizi özenle seçiyor ve müşterilerimize en iyi hizmeti sunmak için çalışıyoruz.</p>
+                        <p>32 yıldır Çukurova bölgesinde Özyürekoğlu Tarım olarak, hem kendi bahçelerimizde hem de tecrübeli tedarikçilerimizle birlikte tarım sektöründe hizmet vermekteyiz.</p>
+                        <p>Tropiko markasıyla, Türkiye'de yetiştirilen tropikal meyve ve sebzeleri en taze halleriyle sizlere ulaştırıyoruz. Uzun yıllara dayanan tecrübemiz ve bölge çiftçileriyle kurduğumuz güçlü ilişkiler sayesinde, kaliteli ürünleri uygun fiyatlarla sunmayı hedefliyoruz.</p>
                         <p>Ürünlerimiz, sürdürülebilir tarım yöntemleri kullanan güvenilir tedarikçilerden gelmektedir. Kalite kontrol süreçlerimiz, meyve ve sebzelerin en taze halleriyle sofralarınıza ulaşmasını garantiler.</p>
                         <p>İşletmelere ve toptan alıcılara özel fiyatlar ve nakliye çözümleri sunmaktayız. Büyük siparişler için ekibimizle iletişime geçebilirsiniz.</p>
                     </div>
@@ -988,10 +992,10 @@
         // Meyve bilgileri
         const fruitInfo = {
             Lime: {
-                taste: "Tropikal limeler, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcı bir etkisi vardır. Yemeklerde, içeceklerde ve tatlılarda kullanılabilir.",
-                health: "C vitamini deposu olan lime, bağışıklık sistemini güçlendirir, sindirime yardımcı olur ve cilt sağlığını korur. Ayrıca antioksidan özelliği vardır ve vücuttaki toksinlerin atılmasına yardımcı olur.",
+                taste: "Türkiye'de Akdeniz bölgesinde yetiştirilen lime, normal limonlara göre daha aromatik ve ekşi bir tada sahiptir. Ferahlatıcı ve canlandırıcı bir etkisi vardır. Yemeklerde, içeceklerde ve tatlılarda kullanılabilir.",
+                health: "C vitamini kaynağı olan lime, bağışıklık sistemini destekler ve sindirime yardımcı olur. Ayrıca yemeklere lezzet katar.",
                 detail: `<h3>Lime - Detaylı Bilgi</h3>
-                <p><strong>Menşei:</strong> Güney Amerika</p>
+                <p><strong>Menşei:</strong> Türkiye - Akdeniz Bölgesi</p>
                 <p><strong>Saklama Koşulları:</strong> Oda sıcaklığında 3-4 gün, buzdolabında 2-3 hafta tazeliğini korur.</p>
                 <p><strong>Kullanım Alanları:</strong> İçecekler, salatalar, deniz ürünleri, tatlılar ve sos yapımında kullanılır.</p>
                 <p><strong>Toptan Sipariş:</strong> İşletmelere özel toptan fiyatlar için lütfen iletişime geçin. Minimum sipariş miktarı 10kg'dır.</p>
@@ -1001,24 +1005,24 @@
                 unit: "kg"
             },
             Avokado: {
-                taste: "Kremamsı, zengin ve hafif cevizimsi bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır. Salatalarda, tostlarda và mezelerde kullanılabilir.",
-                health: "Sağlıklı tekli doymamış yağlar içerir, kalp sağlığını destekler, lif açısından zengindir ve potasyum içeriği yüksektir. Ayrıca göz sağlığına faydalıdır ve kilo kontrolüne yardımcı olur.",
+                taste: "Türkiye'de Akdeniz ve Ege bölgelerinde yetiştirilen avokado, kremamsı ve hafif bir tada sahiptir. Olgunlaştığında yumuşak bir dokusu vardır. Salatalarda, tostlarda ve mezelerde kullanılabilir.",
+                health: "Sağlıklı yağlar içerir, lif açısından zengindir ve potasyum içeriği yüksektir. Besleyici bir meyvedir.",
                 detail: `<h3>Avokado - Detaylı Bilgi</h3>
-                <p><strong>Menşei:</strong> Meksika và Orta Amerika</p>
+                <p><strong>Menşei:</strong> Türkiye - Akdeniz ve Ege Bölgeleri</p>
                 <p><strong>Olgunluk Kontrolü:</strong> Hafifçe bastırıldığında hafif bir yumuşaklık hissedilir. Sapı kolayca çıkabilir.</p>
                 <p><strong>Saklama Koşulları:</strong> Olgunlaşmamış avokadolar oda sıcaklığında bekletilmeli, olgunlaştıktan sonra buzdolabında saklanmalıdır.</p>
-                <p><strong>Toptan Sipariş:</strong> Restoran và kafeler için özel fiyatlar mevcuttur. Düzenli siparişlerde indirim uygulanmaktadır.</p>
+                <p><strong>Toptan Sipariş:</strong> Restoran ve kafeler için özel fiyatlar mevcuttur. Düzenli siparişlerde indirim uygulanmaktadır.</p>
                 <p><strong>Nakliye:</strong> Özel koruyucu ambalajlarla gönderim yapılmaktadır. Siparişler 1-3 iş günü içerisinde teslim edilir.</p>`,
                 price: 65,
                 image: "./images/avakado.svg",
                 unit: "adet"
             },
             "Ejder Meyvesi": {
-                taste: "Hafif tatlı và ferahlatıcı bir tada sahiptir. Kivi và armut karışımı bir lezzeti vardır. Taze olarak tüketilebileceği gibi smoothie'lerde và salatalarda da kullanılabilir.",
-                health: "Antioksidanlar, vitaminler và minerallerle doludur. Bağırsak sağlığını destekler, demir içeriği yüksektir và bağışıklık sistemini güçlendirir. Ayrıca cilt sağlığına da faydalıdır.",
+                taste: "Türkiye'de Akdeniz bölgesinde özel seralarda yetiştirilen ejder meyvesi, hafif tatlı ve ferahlatıcı bir tada sahiptir. Taze olarak tüketilebileceği gibi smoothie'lerde ve salatalarda da kullanılabilir.",
+                health: "Antioksidanlar, vitaminler ve mineraller içerir. Bağırsak sağlığını destekler ve bağışıklık sistemini güçlendirir.",
                 detail: `<h3>Ejder Meyvesi - Detaylı Bilgi</h3>
-                <p><strong>Menşei:</strong> Güneydoğu Asya và Orta Amerika</p>
-                <p><strong>Çeşitler:</strong> Kırmızı và sarı çeşitleri mevcuttur. Kırmızı ejder meyvesi daha tatlıdır.</p>
+                <p><strong>Menşei:</strong> Türkiye - Akdeniz Bölgesi (Özel Seralar)</p>
+                <p><strong>Çeşitler:</strong> Kırmızı çeşitleri mevcuttur.</p>
                 <p><strong>Saklama Koşulları:</strong> Buzdolabında 4-5 gün tazeliğini korur. Dilimlenmiş olarak buzdolabında saklanmamalıdır.</p>
                 <p><strong>Toptan Sipariş:</strong> Özel kutulama seçenekleri mevcuttur. Büyük miktarlı siparişlerde fiyat avantajı sağlanmaktadır.</p>
                 <p><strong>Nakliye:</strong> Hassas bir meyve olduğundan özel korumalı paketleme yapılmaktadır. Siparişler haftanın belirli günlerinde gönderilir.</p>`,
@@ -1027,14 +1031,14 @@
                 unit: "adet"
             },
             Mango: {
-                taste: "Tropikal mango tatlı, sulu và aromatik bir tada sahiptir. Tropikallerin kralı olarak bilinir. Taze olarak tüketilebileceği gibi meyve salatalarında, smoothie'lerde và tatlılarda da kullanılabilir.",
-                health: "A vitamini deposudur, göz sağlığını destekler, cilt sağlığını korur và bağışıklık sistemini güçlendirir. Ayrıca sindirime yardımcı olur và antioksidan özellikleri vardır.",
+                taste: "Türkiye'de Akdeniz bölgesinde özel koşullarda yetiştirilen mango, tatlı ve aromatik bir tada sahiptir. Taze olarak tüketilebileceği gibi meyve salatalarında, smoothie'lerde ve tatlılarda da kullanılabilir.",
+                health: "A vitamini kaynağıdır, cilt sağlığını korur ve bağışıklık sistemini destekler. Ayrıca sindirime yardımcı olur.",
                 detail: `<h3>Mango - Detaylı Bilgi</h3>
-                <p><strong>Menşei:</strong> Hindistan và Güneydoğu Asya</p>
-                <p><strong>Çeşitler:</strong> Alphonso, Kent và Keitt gibi premium çeşitler stoklarımızda mevcuttur.</p>
-                <p><strong>Olgunluk Kontrolü:</strong> Hafifçe bastırıldığında hafif bir yumuşaklık hissedilir và hoş bir kokusu vardır.</p>
-                <p><strong>Toptan Sipariş:</strong> Otel, restoran và catering firmalarına özel fiyatlar sunulmaktadır. Mevsimlik indirimler için takipte kalın.</p>
-                <p><strong>Nakliye:</strong> Olgunluk durumuna göre özenle seçilir và özel ambalajlarla gönderilir. Siparişler 1-2 iş günü içerisinde hazırlanır.</p>`,
+                <p><strong>Menşei:</strong> Türkiye - Akdeniz Bölgesi (Özel Koşullarda)</p>
+                <p><strong>Olgunluk Kontrolü:</strong> Hafifçe bastırıldığında hafif bir yumuşaklık hissedilir ve hoş bir kokusu vardır.</p>
+                <p><strong>Saklama Koşulları:</strong> Olgunlaşmamış mango oda sıcaklığında bekletilmeli, olgunlaştıktan sonra buzdolabında saklanmalıdır.</p>
+                <p><strong>Toptan Sipariş:</strong> Otel, restoran ve catering firmalarına özel fiyatlar sunulmaktadır. Mevsimlik indirimler için takipte kalın.</p>
+                <p><strong>Nakliye:</strong> Olgunluk durumuna göre özenle seçilir ve özel ambalajlarla gönderilir. Siparişler 1-2 iş günü içerisinde hazırlanır.</p>`,
                 price: 120,
                 image: "./images/mango.svg",
                 unit: "kg"
